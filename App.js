@@ -2,7 +2,7 @@ import { StatusBar } from "expo-status-bar";
 import React, { useEffect } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import ReactNativeBiometrics from "react-native-biometrics";
-import { NativeRouter, Route, Link } from "react-router-native";
+// import { NativeRouter, Route, Link } from "react-router-native";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import List from "./Views/ListView";
 import ViewProtein from "./Views/ViewProtein";
@@ -29,11 +29,12 @@ export default function App() {
   //   test();
   // }, []);
   return (
-    <NativeRouter>
-      <Route exact path="/" component={Home} />
-      <Route path="/list" component={List} />
-      <Route path="/ViewProtein" component={ViewProtein} />
-    </NativeRouter>
+    // <NativeRouter>
+    //   {/* <Route exact path="/" component={Home} />
+    //   <Route path="/list" component={List} /> */}
+    //   <Route path="/" component={ViewProtein} />
+    // </NativeRouter>
+    <ViewProtein />
   );
 }
 

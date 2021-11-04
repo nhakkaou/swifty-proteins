@@ -1,0 +1,644 @@
+{
+  "summary": {
+    "succeeded": [
+      "2d.missingargs",
+      "2d.imageData",
+      "2d.scaled",
+      "2d.getcontext",
+      "2d.shadow",
+      "2d.strokeStyle",
+      "2d.canvas",
+      "2d.drawImage",
+      "2d.voidreturn",
+      "2d.pattern",
+      "2d.coordinatespace",
+      "2d.state",
+      "2d.type",
+      "2d.transformation",
+      "2d.composite",
+      "2d.fillRect",
+      "2d.line",
+      "2d.clearRect",
+      "2d.strokeRect",
+      "2d.reset"
+    ],
+    "failed": [
+      "2d.fillStyle",
+      "2d.gradient"
+    ],
+    "notRun": []
+  },
+  "detail": {
+    "2d.fillStyle": {
+      "name": "2d.fillStyle",
+      "succeeded": false,
+      "failureInspectionURL": "http://127.0.0.1:8081/2d.fillStyle.html?noCleanup&runTests=164,217,218,215,216,213,214,211,212,210,182,181,183,180,179,235,230,233,231,168,169,172,204,206,207,208,209,222,223,224,225,219,220,221,226,227,274,240,242,199,200,198,203,201,202,189,",
+      "failedTests": [
+        {
+          "failureMessages": [
+            "Red channel of the pixel at (50, 25): expected 0 got 255",
+            "Green channel of the pixel at (50, 25): expected 255 got 0"
+          ],
+          "contexts": "1",
+          "id": "164",
+          "name": "2d.fillStyle.parse.rgb-percent",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.rgb-percent"
+        },
+        {
+          "failureMessages": [
+            "Red channel of the pixel at (50, 25): expected 0 got 255",
+            "Green channel of the pixel at (50, 25): expected 255 got 0"
+          ],
+          "contexts": "1",
+          "id": "217",
+          "name": "2d.fillStyle.parse.css-color-4-hsl-8",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.css-color-4-hsl-8"
+        },
+        {
+          "failureMessages": [
+            "Red channel of the pixel at (50, 25): expected 0 got 255",
+            "Green channel of the pixel at (50, 25): expected 255 got 0"
+          ],
+          "contexts": "1",
+          "id": "218",
+          "name": "2d.fillStyle.parse.css-color-4-hsl-9",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.css-color-4-hsl-9"
+        },
+        {
+          "failureMessages": [
+            "Red channel of the pixel at (50, 25): expected 0 got 255",
+            "Green channel of the pixel at (50, 25): expected 255 got 0"
+          ],
+          "contexts": "1",
+          "id": "215",
+          "name": "2d.fillStyle.parse.css-color-4-hsl-6",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.css-color-4-hsl-6"
+        },
+        {
+          "failureMessages": [
+            "Red channel of the pixel at (50, 25): expected 0 got 255",
+            "Green channel of the pixel at (50, 25): expected 255 got 0"
+          ],
+          "contexts": "1",
+          "id": "216",
+          "name": "2d.fillStyle.parse.css-color-4-hsl-7",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.css-color-4-hsl-7"
+        },
+        {
+          "failureMessages": [
+            "Red channel of the pixel at (50, 25): expected 0 got 255",
+            "Green channel of the pixel at (50, 25): expected 255 got 0",
+            "Alpha channel of the pixel at (50, 25): expected 51 got 255"
+          ],
+          "contexts": "1",
+          "id": "213",
+          "name": "2d.fillStyle.parse.css-color-4-hsl-4",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.css-color-4-hsl-4"
+        },
+        {
+          "failureMessages": [
+            "Red channel of the pixel at (50, 25): expected 0 got 255",
+            "Green channel of the pixel at (50, 25): expected 255 got 0",
+            "Alpha channel of the pixel at (50, 25): expected 51 got 255"
+          ],
+          "contexts": "1",
+          "id": "214",
+          "name": "2d.fillStyle.parse.css-color-4-hsl-5",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.css-color-4-hsl-5"
+        },
+        {
+          "failureMessages": [
+            "Red channel of the pixel at (50, 25): expected 0 got 255",
+            "Green channel of the pixel at (50, 25): expected 255 got 0",
+            "Alpha channel of the pixel at (50, 25): expected 51 got 255"
+          ],
+          "contexts": "1",
+          "id": "211",
+          "name": "2d.fillStyle.parse.css-color-4-hsl-2",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.css-color-4-hsl-2"
+        },
+        {
+          "failureMessages": [
+            "Red channel of the pixel at (50, 25): expected 0 got 255",
+            "Green channel of the pixel at (50, 25): expected 255 got 0",
+            "Alpha channel of the pixel at (50, 25): expected 51 got 255"
+          ],
+          "contexts": "1",
+          "id": "212",
+          "name": "2d.fillStyle.parse.css-color-4-hsl-3",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.css-color-4-hsl-3"
+        },
+        {
+          "failureMessages": [
+            "Red channel of the pixel at (50, 25): expected 0 got 255",
+            "Green channel of the pixel at (50, 25): expected 255 got 0"
+          ],
+          "contexts": "1",
+          "id": "210",
+          "name": "2d.fillStyle.parse.css-color-4-hsl-1",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.css-color-4-hsl-1"
+        },
+        {
+          "failureMessages": [
+            "Red channel of the pixel at (50, 25): expected 0 got 255",
+            "Green channel of the pixel at (50, 25): expected 255 got 0"
+          ],
+          "contexts": "1",
+          "id": "182",
+          "name": "2d.fillStyle.parse.hsl-5",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.hsl-5"
+        },
+        {
+          "failureMessages": [
+            "Red channel of the pixel at (50, 25): expected 0 got 255",
+            "Green channel of the pixel at (50, 25): expected 255 got 0"
+          ],
+          "contexts": "1",
+          "id": "181",
+          "name": "2d.fillStyle.parse.hsl-4",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.hsl-4"
+        },
+        {
+          "failureMessages": [
+            "Red channel of the pixel at (50, 25): expected 0 got 255",
+            "Green channel of the pixel at (50, 25): expected 255 got 0"
+          ],
+          "contexts": "1",
+          "id": "183",
+          "name": "2d.fillStyle.parse.hsl-6",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.hsl-6"
+        },
+        {
+          "failureMessages": [
+            "Red channel of the pixel at (50, 25): expected 0 got 255",
+            "Green channel of the pixel at (50, 25): expected 255 got 0"
+          ],
+          "contexts": "1",
+          "id": "180",
+          "name": "2d.fillStyle.parse.hsl-3",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.hsl-3"
+        },
+        {
+          "failureMessages": [
+            "Red channel of the pixel at (50, 25): expected 0 got 255",
+            "Green channel of the pixel at (50, 25): expected 255 got 0"
+          ],
+          "contexts": "1",
+          "id": "179",
+          "name": "2d.fillStyle.parse.hsl-2",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.hsl-2"
+        },
+        {
+          "failureMessages": [
+            "Red channel of the pixel at (50, 25): expected 0 got 15",
+            "Green channel of the pixel at (50, 25): expected 255 got 0"
+          ],
+          "contexts": "1",
+          "id": "235",
+          "name": "2d.fillStyle.parse.invalid.hex8",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.invalid.hex8"
+        },
+        {
+          "failureMessages": [
+            "Green channel of the pixel at (50, 25): expected 255 got 0"
+          ],
+          "contexts": "1",
+          "id": "230",
+          "name": "2d.fillStyle.parse.invalid.hex3",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.invalid.hex3"
+        },
+        {
+          "failureMessages": [
+            "Red channel of the pixel at (50, 25): expected 0 got 15",
+            "Green channel of the pixel at (50, 25): expected 255 got 0"
+          ],
+          "contexts": "1",
+          "id": "233",
+          "name": "2d.fillStyle.parse.invalid.hex6",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.invalid.hex6"
+        },
+        {
+          "failureMessages": [
+            "Green channel of the pixel at (50, 25): expected 255 got 0",
+            "Alpha channel of the pixel at (50, 25): expected 255 got 0"
+          ],
+          "contexts": "1",
+          "id": "231",
+          "name": "2d.fillStyle.parse.invalid.hex4",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.invalid.hex4"
+        },
+        {
+          "failureMessages": [
+            "Red channel of the pixel at (50, 25): expected 0 got 255",
+            "Green channel of the pixel at (50, 25): expected 255 got 0"
+          ],
+          "contexts": "1",
+          "id": "168",
+          "name": "2d.fillStyle.parse.rgba-solid-3",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.rgba-solid-3"
+        },
+        {
+          "failureMessages": [
+            "Red channel of the pixel at (50, 25): expected 0 got 255",
+            "Green channel of the pixel at (50, 25): expected 255 got 0"
+          ],
+          "contexts": "1",
+          "id": "169",
+          "name": "2d.fillStyle.parse.rgba-solid-4",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.rgba-solid-4"
+        },
+        {
+          "failureMessages": [
+            "Red channel of the pixel at (50, 25): expected 0 got 255",
+            "Green channel of the pixel at (50, 25): expected 255 got 0",
+            "Alpha channel of the pixel at (50, 25): expected 127 got 255"
+          ],
+          "contexts": "1",
+          "id": "172",
+          "name": "2d.fillStyle.parse.rgba-percent",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.rgba-percent"
+        },
+        {
+          "failureMessages": [
+            "Red channel of the pixel at (50, 25): expected 0 got 255",
+            "Green channel of the pixel at (50, 25): expected 255 got 0"
+          ],
+          "contexts": "1",
+          "id": "204",
+          "name": "2d.fillStyle.parse.css-color-4-rgba-1",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.css-color-4-rgba-1"
+        },
+        {
+          "failureMessages": [
+            "Red channel of the pixel at (50, 25): expected 0 got 255",
+            "Green channel of the pixel at (50, 25): expected 255 got 0",
+            "Alpha channel of the pixel at (50, 25): expected 51 got 255"
+          ],
+          "contexts": "1",
+          "id": "206",
+          "name": "2d.fillStyle.parse.css-color-4-rgba-3",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.css-color-4-rgba-3"
+        },
+        {
+          "failureMessages": [
+            "Red channel of the pixel at (50, 25): expected 0 got 255",
+            "Green channel of the pixel at (50, 25): expected 255 got 0"
+          ],
+          "contexts": "1",
+          "id": "207",
+          "name": "2d.fillStyle.parse.css-color-4-rgba-4",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.css-color-4-rgba-4"
+        },
+        {
+          "failureMessages": [
+            "Red channel of the pixel at (50, 25): expected 0 got 255",
+            "Green channel of the pixel at (50, 25): expected 255 got 0",
+            "Alpha channel of the pixel at (50, 25): expected 51 got 255"
+          ],
+          "contexts": "1",
+          "id": "208",
+          "name": "2d.fillStyle.parse.css-color-4-rgba-5",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.css-color-4-rgba-5"
+        },
+        {
+          "failureMessages": [
+            "Red channel of the pixel at (50, 25): expected 0 got 255",
+            "Green channel of the pixel at (50, 25): expected 255 got 0",
+            "Alpha channel of the pixel at (50, 25): expected 51 got 255"
+          ],
+          "contexts": "1",
+          "id": "209",
+          "name": "2d.fillStyle.parse.css-color-4-rgba-6",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.css-color-4-rgba-6"
+        },
+        {
+          "failureMessages": [
+            "Red channel of the pixel at (50, 25): expected 0 got 255",
+            "Green channel of the pixel at (50, 25): expected 255 got 0",
+            "Alpha channel of the pixel at (50, 25): expected 51 got 255"
+          ],
+          "contexts": "1",
+          "id": "222",
+          "name": "2d.fillStyle.parse.css-color-4-hsla-4",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.css-color-4-hsla-4"
+        },
+        {
+          "failureMessages": [
+            "Red channel of the pixel at (50, 25): expected 0 got 255",
+            "Green channel of the pixel at (50, 25): expected 255 got 0",
+            "Alpha channel of the pixel at (50, 25): expected 51 got 255"
+          ],
+          "contexts": "1",
+          "id": "223",
+          "name": "2d.fillStyle.parse.css-color-4-hsla-5",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.css-color-4-hsla-5"
+        },
+        {
+          "failureMessages": [
+            "Red channel of the pixel at (50, 25): expected 0 got 255",
+            "Green channel of the pixel at (50, 25): expected 255 got 0"
+          ],
+          "contexts": "1",
+          "id": "224",
+          "name": "2d.fillStyle.parse.css-color-4-hsla-6",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.css-color-4-hsla-6"
+        },
+        {
+          "failureMessages": [
+            "Red channel of the pixel at (50, 25): expected 0 got 255",
+            "Green channel of the pixel at (50, 25): expected 255 got 0"
+          ],
+          "contexts": "1",
+          "id": "225",
+          "name": "2d.fillStyle.parse.css-color-4-hsla-7",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.css-color-4-hsla-7"
+        },
+        {
+          "failureMessages": [
+            "Red channel of the pixel at (50, 25): expected 0 got 255",
+            "Green channel of the pixel at (50, 25): expected 255 got 0"
+          ],
+          "contexts": "1",
+          "id": "219",
+          "name": "2d.fillStyle.parse.css-color-4-hsla-1",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.css-color-4-hsla-1"
+        },
+        {
+          "failureMessages": [
+            "Red channel of the pixel at (50, 25): expected 0 got 255",
+            "Green channel of the pixel at (50, 25): expected 255 got 0",
+            "Alpha channel of the pixel at (50, 25): expected 51 got 255"
+          ],
+          "contexts": "1",
+          "id": "220",
+          "name": "2d.fillStyle.parse.css-color-4-hsla-2",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.css-color-4-hsla-2"
+        },
+        {
+          "failureMessages": [
+            "Red channel of the pixel at (50, 25): expected 0 got 255",
+            "Green channel of the pixel at (50, 25): expected 255 got 0",
+            "Alpha channel of the pixel at (50, 25): expected 51 got 255"
+          ],
+          "contexts": "1",
+          "id": "221",
+          "name": "2d.fillStyle.parse.css-color-4-hsla-3",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.css-color-4-hsla-3"
+        },
+        {
+          "failureMessages": [
+            "Red channel of the pixel at (50, 25): expected 0 got 255",
+            "Green channel of the pixel at (50, 25): expected 255 got 0"
+          ],
+          "contexts": "1",
+          "id": "226",
+          "name": "2d.fillStyle.parse.css-color-4-hsla-8",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.css-color-4-hsla-8"
+        },
+        {
+          "failureMessages": [
+            "Red channel of the pixel at (50, 25): expected 0 got 255",
+            "Green channel of the pixel at (50, 25): expected 255 got 0"
+          ],
+          "contexts": "1",
+          "id": "227",
+          "name": "2d.fillStyle.parse.css-color-4-hsla-9",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.css-color-4-hsla-9"
+        },
+        {
+          "failureMessages": [
+            null
+          ],
+          "contexts": "1",
+          "id": "274",
+          "name": "2d.fillStyle.parse.system",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.system"
+        },
+        {
+          "failureMessages": [
+            "Red channel of the pixel at (50, 25): expected 0 got 255",
+            "Green channel of the pixel at (50, 25): expected 255 got 0"
+          ],
+          "contexts": "1",
+          "id": "240",
+          "name": "2d.fillStyle.parse.invalid.rgba-2",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.invalid.rgba-2"
+        },
+        {
+          "failureMessages": [
+            "Red channel of the pixel at (50, 25): expected 0 got 255",
+            "Green channel of the pixel at (50, 25): expected 255 got 0"
+          ],
+          "contexts": "1",
+          "id": "242",
+          "name": "2d.fillStyle.parse.invalid.rgba-4",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.invalid.rgba-4"
+        },
+        {
+          "failureMessages": [
+            "Red channel of the pixel at (50, 25): expected 0 got 255",
+            "Green channel of the pixel at (50, 25): expected 255 got 0",
+            "Alpha channel of the pixel at (50, 25): expected 51 got 255"
+          ],
+          "contexts": "1",
+          "id": "199",
+          "name": "2d.fillStyle.parse.css-color-4-rgb-2",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.css-color-4-rgb-2"
+        },
+        {
+          "failureMessages": [
+            "Red channel of the pixel at (50, 25): expected 0 got 255",
+            "Green channel of the pixel at (50, 25): expected 255 got 0",
+            "Alpha channel of the pixel at (50, 25): expected 51 got 255"
+          ],
+          "contexts": "1",
+          "id": "200",
+          "name": "2d.fillStyle.parse.css-color-4-rgb-3",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.css-color-4-rgb-3"
+        },
+        {
+          "failureMessages": [
+            "Red channel of the pixel at (50, 25): expected 0 got 255",
+            "Green channel of the pixel at (50, 25): expected 255 got 0"
+          ],
+          "contexts": "1",
+          "id": "198",
+          "name": "2d.fillStyle.parse.css-color-4-rgb-1",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.css-color-4-rgb-1"
+        },
+        {
+          "failureMessages": [
+            "Red channel of the pixel at (50, 25): expected 0 got 255",
+            "Green channel of the pixel at (50, 25): expected 255 got 0",
+            "Alpha channel of the pixel at (50, 25): expected 51 got 255"
+          ],
+          "contexts": "1",
+          "id": "203",
+          "name": "2d.fillStyle.parse.css-color-4-rgb-6",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.css-color-4-rgb-6"
+        },
+        {
+          "failureMessages": [
+            "Red channel of the pixel at (50, 25): expected 0 got 255",
+            "Green channel of the pixel at (50, 25): expected 255 got 0"
+          ],
+          "contexts": "1",
+          "id": "201",
+          "name": "2d.fillStyle.parse.css-color-4-rgb-4",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.css-color-4-rgb-4"
+        },
+        {
+          "failureMessages": [
+            "Red channel of the pixel at (50, 25): expected 0 got 255",
+            "Green channel of the pixel at (50, 25): expected 255 got 0",
+            "Alpha channel of the pixel at (50, 25): expected 51 got 255"
+          ],
+          "contexts": "1",
+          "id": "202",
+          "name": "2d.fillStyle.parse.css-color-4-rgb-5",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.css-color-4-rgb-5"
+        },
+        {
+          "failureMessages": [
+            "Red channel of the pixel at (50, 25): expected 0 got 255",
+            "Green channel of the pixel at (50, 25): expected 255 got 0"
+          ],
+          "contexts": "1",
+          "id": "189",
+          "name": "2d.fillStyle.parse.hsla-2",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.hsla-2"
+        }
+      ]
+    },
+    "2d.gradient": {
+      "name": "2d.gradient",
+      "succeeded": false,
+      "failureInspectionURL": "http://127.0.0.1:8081/2d.gradient.html?noCleanup&runTests=296,322,",
+      "failedTests": [
+        {
+          "failureMessages": [
+            "[object Event]"
+          ],
+          "contexts": "1",
+          "id": "296",
+          "name": "2d.gradient.interpolate.zerosize.fillText",
+          "width": "100",
+          "height": "50",
+          "description": "2d.gradient.interpolate.zerosize.fillText"
+        },
+        {
+          "failureMessages": [
+            "Red channel of the pixel at (1, 1): expected 0 got 255",
+            "Green channel of the pixel at (1, 1): expected 255 got 0",
+            "Red channel of the pixel at (50, 1): expected 0 got 255",
+            "Green channel of the pixel at (50, 1): expected 255 got 0",
+            "Red channel of the pixel at (98, 1): expected 0 got 255",
+            "Green channel of the pixel at (98, 1): expected 255 got 0",
+            "Red channel of the pixel at (98, 25): expected 0 got 255",
+            "Green channel of the pixel at (98, 25): expected 255 got 0",
+            "Red channel of the pixel at (1, 48): expected 0 got 255",
+            "Green channel of the pixel at (1, 48): expected 255 got 0"
+          ],
+          "contexts": "1",
+          "id": "322",
+          "name": "2d.gradient.radial.touch2",
+          "width": "100",
+          "height": "50",
+          "description": "2d.gradient.radial.touch2"
+        }
+      ]
+    }
+  }
+}

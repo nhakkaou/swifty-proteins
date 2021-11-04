@@ -1,0 +1,1813 @@
+{
+  "summary": {
+    "succeeded": [
+      "2d.scaled",
+      "2d.getcontext",
+      "2d.shadow",
+      "2d.strokeStyle",
+      "2d.canvas",
+      "2d.voidreturn",
+      "2d.coordinatespace",
+      "2d.type",
+      "2d.transformation",
+      "2d.composite",
+      "2d.fillRect",
+      "2d.line",
+      "2d.clearRect",
+      "2d.reset"
+    ],
+    "failed": [
+      "2d.missingargs",
+      "2d.imageData",
+      "2d.fillStyle",
+      "2d.drawImage",
+      "2d.gradient",
+      "2d.pattern",
+      "2d.state",
+      "2d.strokeRect"
+    ],
+    "notRun": []
+  },
+  "detail": {
+    "2d.missingargs": {
+      "name": "2d.missingargs",
+      "succeeded": false,
+      "failureInspectionURL": "http://127.0.0.1:8081/2d.missingargs.html?noCleanup&runTests=10,",
+      "failedTests": [
+        {
+          "failureMessages": [
+            "SyntaxError: Could not find supported font family"
+          ],
+          "contexts": "1",
+          "id": "10",
+          "name": "2d.missingargs",
+          "width": "100",
+          "height": "50",
+          "description": "2d.missingargs (Missing arguments cause TypeError)"
+        }
+      ]
+    },
+    "2d.imageData": {
+      "name": "2d.imageData",
+      "succeeded": false,
+      "failureInspectionURL": "http://127.0.0.1:8081/2d.imageData.html?noCleanup&runTests=716,723,700,728,674,677,727,686,725,691,673,717,720,678,693,726,701,707,729,730,721,724,679,",
+      "failedTests": [
+        {
+          "failureMessages": [
+            "TypeError: Cannot read property 'toLowerCase' of undefined"
+          ],
+          "contexts": "1",
+          "id": "716",
+          "name": "2d.imageData.put.basic",
+          "width": "100",
+          "height": "50",
+          "description": "2d.imageData.put.basic (putImageData() puts image data from getImageData() onto the canvas)"
+        },
+        {
+          "failureMessages": [
+            "TypeError: Cannot read property 'toLowerCase' of undefined"
+          ],
+          "contexts": "1",
+          "id": "723",
+          "name": "2d.imageData.put.dirty.rect1",
+          "width": "100",
+          "height": "50",
+          "description": "2d.imageData.put.dirty.rect1 (putImageData() only modifies areas inside the dirty rectangle, using width and height)"
+        },
+        {
+          "failureMessages": [
+            "ReferenceError: actual is not defined"
+          ],
+          "contexts": "1",
+          "id": "700",
+          "name": "2d.imageData.get.order.alpha",
+          "width": "100",
+          "height": "50",
+          "description": "2d.imageData.get.order.alpha (getImageData() returns A in the fourth component)"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Property not supported"
+          ],
+          "contexts": "1",
+          "id": "728",
+          "name": "2d.imageData.put.unaffected",
+          "width": "100",
+          "height": "50",
+          "description": "2d.imageData.put.unaffected (putImageData() is not affected by context state)"
+        },
+        {
+          "failureMessages": [
+            "ReferenceError: actual is not defined"
+          ],
+          "contexts": "1",
+          "id": "674",
+          "name": "2d.imageData.create1.type",
+          "width": "100",
+          "height": "50",
+          "description": "2d.imageData.create1.type (createImageData(imgdata) returns an ImageData object containing a Uint8ClampedArray object)"
+        },
+        {
+          "failureMessages": [
+            "ReferenceError: actual is not defined"
+          ],
+          "contexts": "1",
+          "id": "677",
+          "name": "2d.imageData.create2.initial",
+          "width": "100",
+          "height": "50",
+          "description": "2d.imageData.create2.initial (createImageData(sw, sh) returns transparent black data of the right size)"
+        },
+        {
+          "failureMessages": [
+            "TypeError: Cannot read property 'toLowerCase' of undefined"
+          ],
+          "contexts": "1",
+          "id": "727",
+          "name": "2d.imageData.put.unchanged",
+          "width": "100",
+          "height": "50",
+          "description": "2d.imageData.put.unchanged (putImageData(getImageData(...), ...) has no effect)"
+        },
+        {
+          "failureMessages": [
+            "ReferenceError: actual is not defined"
+          ],
+          "contexts": "1",
+          "id": "686",
+          "name": "2d.imageData.get.type",
+          "width": "100",
+          "height": "50",
+          "description": "2d.imageData.get.type (getImageData() returns an ImageData object containing a Uint8ClampedArray object)"
+        },
+        {
+          "failureMessages": [
+            "TypeError: Cannot read property 'toLowerCase' of undefined"
+          ],
+          "contexts": "1",
+          "id": "725",
+          "name": "2d.imageData.put.dirty.negative",
+          "width": "100",
+          "height": "50",
+          "description": "2d.imageData.put.dirty.negative (putImageData() handles negative-sized dirty rectangles correctly)"
+        },
+        {
+          "failureMessages": [
+            "ReferenceError: actual is not defined"
+          ],
+          "contexts": "1",
+          "id": "691",
+          "name": "2d.imageData.get.source.size",
+          "width": "100",
+          "height": "50",
+          "description": "2d.imageData.get.source.size (getImageData() returns bigger ImageData for bigger source rectangle)"
+        },
+        {
+          "failureMessages": [
+            "ReferenceError: actual is not defined"
+          ],
+          "contexts": "1",
+          "id": "673",
+          "name": "2d.imageData.create2.type",
+          "width": "100",
+          "height": "50",
+          "description": "2d.imageData.create2.type (createImageData(sw, sh) returns an ImageData object containing a Uint8ClampedArray object)"
+        },
+        {
+          "failureMessages": [
+            "TypeError: Cannot read property 'toLowerCase' of undefined"
+          ],
+          "contexts": "1",
+          "id": "717",
+          "name": "2d.imageData.put.created",
+          "width": "100",
+          "height": "50",
+          "description": "2d.imageData.put.created (putImageData() puts image data from createImageData() onto the canvas)"
+        },
+        {
+          "failureMessages": [
+            "TypeError: Cannot read property 'toLowerCase' of undefined"
+          ],
+          "contexts": "1",
+          "id": "720",
+          "name": "2d.imageData.put.alpha",
+          "width": "100",
+          "height": "50",
+          "description": "2d.imageData.put.alpha (putImageData() puts non-solid image data correctly)"
+        },
+        {
+          "failureMessages": [
+            "ReferenceError: actual is not defined"
+          ],
+          "contexts": "1",
+          "id": "678",
+          "name": "2d.imageData.create1.initial",
+          "width": "100",
+          "height": "50",
+          "description": "2d.imageData.create1.initial (createImageData(imgdata) returns transparent black data of the right size)"
+        },
+        {
+          "failureMessages": [
+            "ReferenceError: actual is not defined"
+          ],
+          "contexts": "1",
+          "id": "693",
+          "name": "2d.imageData.get.nonpremul",
+          "width": "100",
+          "height": "50",
+          "description": "2d.imageData.get.nonpremul (getImageData() returns non-premultiplied colours)"
+        },
+        {
+          "failureMessages": [
+            "TypeError: Cannot read property 'toLowerCase' of undefined"
+          ],
+          "contexts": "1",
+          "id": "726",
+          "name": "2d.imageData.put.dirty.outside",
+          "width": "100",
+          "height": "50",
+          "description": "2d.imageData.put.dirty.outside (putImageData() handles dirty rectangles outside the canvas correctly)"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Property not supported"
+          ],
+          "contexts": "1",
+          "id": "701",
+          "name": "2d.imageData.get.unaffected",
+          "width": "100",
+          "height": "50",
+          "description": "2d.imageData.get.unaffected (getImageData() is not affected by context state)"
+        },
+        {
+          "failureMessages": [
+            "function() { new ImageData(new Uint8ClampedArray(0), 1); }",
+            "function() { new ImageData(new Uint8ClampedArray(0), 1); }",
+            "function() { new ImageData(new Uint8ClampedArray(3), 1); }",
+            "function() { new ImageData(new Uint8ClampedArray(3), 1); }"
+          ],
+          "contexts": "1",
+          "id": "707",
+          "name": "2d.imageData.object.ctor.array.bounds",
+          "width": "100",
+          "height": "50",
+          "description": "2d.imageData.object.ctor.array.bounds (ImageData has a usable constructor)"
+        },
+        {
+          "failureMessages": [
+            "TypeError: Cannot read property 'toLowerCase' of undefined"
+          ],
+          "contexts": "1",
+          "id": "729",
+          "name": "2d.imageData.put.clip",
+          "width": "100",
+          "height": "50",
+          "description": "2d.imageData.put.clip (putImageData() is not affected by clipping regions)"
+        },
+        {
+          "failureMessages": [
+            "TypeError: Cannot read property 'toLowerCase' of undefined"
+          ],
+          "contexts": "1",
+          "id": "730",
+          "name": "2d.imageData.put.path",
+          "width": "100",
+          "height": "50",
+          "description": "2d.imageData.put.path (putImageData() does not affect the current path)"
+        },
+        {
+          "failureMessages": [
+            "TypeError: Cannot read property 'toLowerCase' of undefined"
+          ],
+          "contexts": "1",
+          "id": "721",
+          "name": "2d.imageData.put.modified",
+          "width": "100",
+          "height": "50",
+          "description": "2d.imageData.put.modified (putImageData() puts modified image data correctly)"
+        },
+        {
+          "failureMessages": [
+            "TypeError: Cannot read property 'toLowerCase' of undefined"
+          ],
+          "contexts": "1",
+          "id": "724",
+          "name": "2d.imageData.put.dirty.rect2",
+          "width": "100",
+          "height": "50",
+          "description": "2d.imageData.put.dirty.rect2 (putImageData() only modifies areas inside the dirty rectangle, using x and y)"
+        },
+        {
+          "failureMessages": [
+            "ReferenceError: actual is not defined"
+          ],
+          "contexts": "1",
+          "id": "679",
+          "name": "2d.imageData.create2.large",
+          "width": "100",
+          "height": "50",
+          "description": "2d.imageData.create2.large (createImageData(sw, sh) works for sizes much larger than the canvas)"
+        }
+      ]
+    },
+    "2d.fillStyle": {
+      "name": "2d.fillStyle",
+      "succeeded": false,
+      "failureInspectionURL": "http://127.0.0.1:8081/2d.fillStyle.html?noCleanup&runTests=164,217,218,215,216,213,214,211,212,210,177,176,276,282,182,181,183,178,180,179,255,254,253,257,256,271,270,258,260,259,235,175,157,229,230,228,233,234,231,232,277,249,247,248,245,246,244,281,261,263,262,267,269,268,265,264,266,273,272,172,204,206,207,208,209,222,223,224,225,219,220,221,226,227,274,280,155,194,193,240,241,242,243,192,191,279,195,275,278,199,200,203,201,202,160,163,239,250,237,238,236,190,188,189,165,251,252,187,184,186,185,",
+      "failedTests": [
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "164",
+          "name": "2d.fillStyle.parse.rgb-percent",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.rgb-percent"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "217",
+          "name": "2d.fillStyle.parse.css-color-4-hsl-8",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.css-color-4-hsl-8"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "218",
+          "name": "2d.fillStyle.parse.css-color-4-hsl-9",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.css-color-4-hsl-9"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "215",
+          "name": "2d.fillStyle.parse.css-color-4-hsl-6",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.css-color-4-hsl-6"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "216",
+          "name": "2d.fillStyle.parse.css-color-4-hsl-7",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.css-color-4-hsl-7"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "213",
+          "name": "2d.fillStyle.parse.css-color-4-hsl-4",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.css-color-4-hsl-4"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "214",
+          "name": "2d.fillStyle.parse.css-color-4-hsl-5",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.css-color-4-hsl-5"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "211",
+          "name": "2d.fillStyle.parse.css-color-4-hsl-2",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.css-color-4-hsl-2"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "212",
+          "name": "2d.fillStyle.parse.css-color-4-hsl-3",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.css-color-4-hsl-3"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "210",
+          "name": "2d.fillStyle.parse.css-color-4-hsl-1",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.css-color-4-hsl-1"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "177",
+          "name": "2d.fillStyle.parse.transparent-2",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.transparent-2"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "176",
+          "name": "2d.fillStyle.parse.transparent-1",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.transparent-1"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "276",
+          "name": "2d.fillStyle.parse.current.changed",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.current.changed (currentColor is computed when the attribute is set, not when it is painted)"
+        },
+        {
+          "failureMessages": [
+            "ctx.fillStyle === 'rgba(0, 0, 0, 0)' (got rgba(0,0,0,0)[string], expected rgba(0, 0, 0, 0)[string])"
+          ],
+          "contexts": "1",
+          "id": "282",
+          "name": "2d.fillStyle.get.transparent",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.get.transparent"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "182",
+          "name": "2d.fillStyle.parse.hsl-5",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.hsl-5"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "181",
+          "name": "2d.fillStyle.parse.hsl-4",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.hsl-4"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "183",
+          "name": "2d.fillStyle.parse.hsl-6",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.hsl-6"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "178",
+          "name": "2d.fillStyle.parse.hsl-1",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.hsl-1"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "180",
+          "name": "2d.fillStyle.parse.hsl-3",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.hsl-3"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "179",
+          "name": "2d.fillStyle.parse.hsl-2",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.hsl-2"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "255",
+          "name": "2d.fillStyle.parse.invalid.name-3",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.invalid.name-3"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "254",
+          "name": "2d.fillStyle.parse.invalid.name-2",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.invalid.name-2"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "253",
+          "name": "2d.fillStyle.parse.invalid.name-1",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.invalid.name-1"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "257",
+          "name": "2d.fillStyle.parse.invalid.name-5",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.invalid.name-5"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "256",
+          "name": "2d.fillStyle.parse.invalid.name-4",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.invalid.name-4"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "271",
+          "name": "2d.fillStyle.parse.invalid.css-color-4-rgb-5",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.invalid.css-color-4-rgb-5"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "270",
+          "name": "2d.fillStyle.parse.invalid.css-color-4-rgb-4",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.invalid.css-color-4-rgb-4"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "258",
+          "name": "2d.fillStyle.parse.invalid.css-color-4-rgb-1",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.invalid.css-color-4-rgb-1"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "260",
+          "name": "2d.fillStyle.parse.invalid.css-color-4-rgb-3",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.invalid.css-color-4-rgb-3"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "259",
+          "name": "2d.fillStyle.parse.invalid.css-color-4-rgb-2",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.invalid.css-color-4-rgb-2"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "235",
+          "name": "2d.fillStyle.parse.invalid.hex8",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.invalid.hex8"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "175",
+          "name": "2d.fillStyle.parse.rgba-eof",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.rgba-eof"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "157",
+          "name": "2d.fillStyle.parse.hex8",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.hex8"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "229",
+          "name": "2d.fillStyle.parse.invalid.hex2",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.invalid.hex2"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "230",
+          "name": "2d.fillStyle.parse.invalid.hex3",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.invalid.hex3"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "228",
+          "name": "2d.fillStyle.parse.invalid.hex1",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.invalid.hex1"
+        },
+        {
+          "failureMessages": [
+            "Red channel of the pixel at (50, 25): expected 0 got 15",
+            "Green channel of the pixel at (50, 25): expected 255 got 0"
+          ],
+          "contexts": "1",
+          "id": "233",
+          "name": "2d.fillStyle.parse.invalid.hex6",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.invalid.hex6"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "234",
+          "name": "2d.fillStyle.parse.invalid.hex7",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.invalid.hex7"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "231",
+          "name": "2d.fillStyle.parse.invalid.hex4",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.invalid.hex4"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "232",
+          "name": "2d.fillStyle.parse.invalid.hex5",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.invalid.hex5"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "2",
+          "id": "277",
+          "name": "2d.fillStyle.parse.current.removed",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.current.removed (currentColor is solid black when the canvas element is not in a document)"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "249",
+          "name": "2d.fillStyle.parse.invalid.hsl-6",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.invalid.hsl-6"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "247",
+          "name": "2d.fillStyle.parse.invalid.hsl-4",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.invalid.hsl-4"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "248",
+          "name": "2d.fillStyle.parse.invalid.hsl-5",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.invalid.hsl-5"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "245",
+          "name": "2d.fillStyle.parse.invalid.hsl-2",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.invalid.hsl-2"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "246",
+          "name": "2d.fillStyle.parse.invalid.hsl-3",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.invalid.hsl-3"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "244",
+          "name": "2d.fillStyle.parse.invalid.hsl-1",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.invalid.hsl-1"
+        },
+        {
+          "failureMessages": [
+            null
+          ],
+          "contexts": "1",
+          "id": "281",
+          "name": "2d.fillStyle.get.semitransparent",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.get.semitransparent"
+        },
+        {
+          "failureMessages": [
+            "Green channel of the pixel at (50, 25): expected 255 got 0",
+            "Alpha channel of the pixel at (50, 25): expected 255 got 0"
+          ],
+          "contexts": "1",
+          "id": "261",
+          "name": "2d.fillStyle.parse.invalid.css-color-4-rgba-1",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.invalid.css-color-4-rgba-1"
+        },
+        {
+          "failureMessages": [
+            "Green channel of the pixel at (50, 25): expected 255 got 0",
+            "Alpha channel of the pixel at (50, 25): expected 255 got 0"
+          ],
+          "contexts": "1",
+          "id": "263",
+          "name": "2d.fillStyle.parse.invalid.css-color-4-rgba-3",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.invalid.css-color-4-rgba-3"
+        },
+        {
+          "failureMessages": [
+            "Green channel of the pixel at (50, 25): expected 255 got 0",
+            "Alpha channel of the pixel at (50, 25): expected 255 got 0"
+          ],
+          "contexts": "1",
+          "id": "262",
+          "name": "2d.fillStyle.parse.invalid.css-color-4-rgba-2",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.invalid.css-color-4-rgba-2"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "267",
+          "name": "2d.fillStyle.parse.invalid.css-color-4-hsla-1",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.invalid.css-color-4-hsla-1"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "269",
+          "name": "2d.fillStyle.parse.invalid.css-color-4-hsla-3",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.invalid.css-color-4-hsla-3"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "268",
+          "name": "2d.fillStyle.parse.invalid.css-color-4-hsla-2",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.invalid.css-color-4-hsla-2"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "265",
+          "name": "2d.fillStyle.parse.invalid.css-color-4-hsl-2",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.invalid.css-color-4-hsl-2"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "264",
+          "name": "2d.fillStyle.parse.invalid.css-color-4-hsl-1",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.invalid.css-color-4-hsl-1"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "266",
+          "name": "2d.fillStyle.parse.invalid.css-color-4-hsl-3",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.invalid.css-color-4-hsl-3"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "273",
+          "name": "2d.fillStyle.parse.invalid.css-color-4-hsl-5",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.invalid.css-color-4-hsl-5"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "272",
+          "name": "2d.fillStyle.parse.invalid.css-color-4-hsl-4",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.invalid.css-color-4-hsl-4"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "172",
+          "name": "2d.fillStyle.parse.rgba-percent",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.rgba-percent"
+        },
+        {
+          "failureMessages": [
+            "Green channel of the pixel at (50, 25): expected 255 got 0",
+            "Alpha channel of the pixel at (50, 25): expected 255 got 0"
+          ],
+          "contexts": "1",
+          "id": "204",
+          "name": "2d.fillStyle.parse.css-color-4-rgba-1",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.css-color-4-rgba-1"
+        },
+        {
+          "failureMessages": [
+            "Green channel of the pixel at (50, 25): expected 255 got 0",
+            "Alpha channel of the pixel at (50, 25): expected 51 got 0"
+          ],
+          "contexts": "1",
+          "id": "206",
+          "name": "2d.fillStyle.parse.css-color-4-rgba-3",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.css-color-4-rgba-3"
+        },
+        {
+          "failureMessages": [
+            "Green channel of the pixel at (50, 25): expected 255 got 0",
+            "Alpha channel of the pixel at (50, 25): expected 255 got 0"
+          ],
+          "contexts": "1",
+          "id": "207",
+          "name": "2d.fillStyle.parse.css-color-4-rgba-4",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.css-color-4-rgba-4"
+        },
+        {
+          "failureMessages": [
+            "Green channel of the pixel at (50, 25): expected 255 got 0",
+            "Alpha channel of the pixel at (50, 25): expected 51 got 0"
+          ],
+          "contexts": "1",
+          "id": "208",
+          "name": "2d.fillStyle.parse.css-color-4-rgba-5",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.css-color-4-rgba-5"
+        },
+        {
+          "failureMessages": [
+            "Green channel of the pixel at (50, 25): expected 255 got 0",
+            "Alpha channel of the pixel at (50, 25): expected 51 got 0"
+          ],
+          "contexts": "1",
+          "id": "209",
+          "name": "2d.fillStyle.parse.css-color-4-rgba-6",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.css-color-4-rgba-6"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "222",
+          "name": "2d.fillStyle.parse.css-color-4-hsla-4",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.css-color-4-hsla-4"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "223",
+          "name": "2d.fillStyle.parse.css-color-4-hsla-5",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.css-color-4-hsla-5"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "224",
+          "name": "2d.fillStyle.parse.css-color-4-hsla-6",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.css-color-4-hsla-6"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "225",
+          "name": "2d.fillStyle.parse.css-color-4-hsla-7",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.css-color-4-hsla-7"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "219",
+          "name": "2d.fillStyle.parse.css-color-4-hsla-1",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.css-color-4-hsla-1"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "220",
+          "name": "2d.fillStyle.parse.css-color-4-hsla-2",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.css-color-4-hsla-2"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "221",
+          "name": "2d.fillStyle.parse.css-color-4-hsla-3",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.css-color-4-hsla-3"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "226",
+          "name": "2d.fillStyle.parse.css-color-4-hsla-8",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.css-color-4-hsla-8"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "227",
+          "name": "2d.fillStyle.parse.css-color-4-hsla-9",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.css-color-4-hsla-9"
+        },
+        {
+          "failureMessages": [
+            null
+          ],
+          "contexts": "1",
+          "id": "274",
+          "name": "2d.fillStyle.parse.system",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.system"
+        },
+        {
+          "failureMessages": [
+            "ctx.fillStyle === '#ffaa00' (got #fa0[string], expected #ffaa00[string])"
+          ],
+          "contexts": "1",
+          "id": "280",
+          "name": "2d.fillStyle.get.solid",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.get.solid"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "155",
+          "name": "2d.fillStyle.parse.hex4",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.hex4"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "194",
+          "name": "2d.fillStyle.parse.hsla-clamp-5",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.hsla-clamp-5"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "193",
+          "name": "2d.fillStyle.parse.hsla-clamp-4",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.hsla-clamp-4"
+        },
+        {
+          "failureMessages": [
+            "Green channel of the pixel at (50, 25): expected 255 got 0",
+            "Alpha channel of the pixel at (50, 25): expected 255 got 0"
+          ],
+          "contexts": "1",
+          "id": "240",
+          "name": "2d.fillStyle.parse.invalid.rgba-2",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.invalid.rgba-2"
+        },
+        {
+          "failureMessages": [
+            "Red channel of the pixel at (50, 25): expected 0 got 255",
+            "Green channel of the pixel at (50, 25): expected 255 got 0"
+          ],
+          "contexts": "1",
+          "id": "241",
+          "name": "2d.fillStyle.parse.invalid.rgba-3",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.invalid.rgba-3"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "242",
+          "name": "2d.fillStyle.parse.invalid.rgba-4",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.invalid.rgba-4"
+        },
+        {
+          "failureMessages": [
+            "Red channel of the pixel at (50, 25): expected 0 got 255",
+            "Green channel of the pixel at (50, 25): expected 255 got 0"
+          ],
+          "contexts": "1",
+          "id": "243",
+          "name": "2d.fillStyle.parse.invalid.rgba-5",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.invalid.rgba-5"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "192",
+          "name": "2d.fillStyle.parse.hsla-clamp-3",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.hsla-clamp-3"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "191",
+          "name": "2d.fillStyle.parse.hsla-clamp-2",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.hsla-clamp-2"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "279",
+          "name": "2d.fillStyle.invalidtype",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.invalidtype"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "195",
+          "name": "2d.fillStyle.parse.hsla-clamp-6",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.hsla-clamp-6"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "275",
+          "name": "2d.fillStyle.parse.current.basic",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.current.basic (currentColor is computed from the canvas element)"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "278",
+          "name": "2d.fillStyle.invalidstring",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.invalidstring"
+        },
+        {
+          "failureMessages": [
+            "Alpha channel of the pixel at (50, 25): expected 51 got 255"
+          ],
+          "contexts": "1",
+          "id": "199",
+          "name": "2d.fillStyle.parse.css-color-4-rgb-2",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.css-color-4-rgb-2"
+        },
+        {
+          "failureMessages": [
+            "Alpha channel of the pixel at (50, 25): expected 51 got 255"
+          ],
+          "contexts": "1",
+          "id": "200",
+          "name": "2d.fillStyle.parse.css-color-4-rgb-3",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.css-color-4-rgb-3"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "203",
+          "name": "2d.fillStyle.parse.css-color-4-rgb-6",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.css-color-4-rgb-6"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "201",
+          "name": "2d.fillStyle.parse.css-color-4-rgb-4",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.css-color-4-rgb-4"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "202",
+          "name": "2d.fillStyle.parse.css-color-4-rgb-5",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.css-color-4-rgb-5"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "160",
+          "name": "2d.fillStyle.parse.rgb-clamp-2",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.rgb-clamp-2"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "163",
+          "name": "2d.fillStyle.parse.rgb-clamp-5",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.rgb-clamp-5"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "239",
+          "name": "2d.fillStyle.parse.invalid.rgba-1",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.invalid.rgba-1"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "250",
+          "name": "2d.fillStyle.parse.invalid.hsla-1",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.invalid.hsla-1"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "237",
+          "name": "2d.fillStyle.parse.invalid.rgb-2",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.invalid.rgb-2"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "238",
+          "name": "2d.fillStyle.parse.invalid.rgb-3",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.invalid.rgb-3"
+        },
+        {
+          "failureMessages": [
+            "Red channel of the pixel at (50, 25): expected 0 got 255",
+            "Green channel of the pixel at (50, 25): expected 255 got 0"
+          ],
+          "contexts": "1",
+          "id": "236",
+          "name": "2d.fillStyle.parse.invalid.rgb-1",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.invalid.rgb-1"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "190",
+          "name": "2d.fillStyle.parse.hsla-clamp-1",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.hsla-clamp-1"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "188",
+          "name": "2d.fillStyle.parse.hsla-1",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.hsla-1"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "189",
+          "name": "2d.fillStyle.parse.hsla-2",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.hsla-2"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "165",
+          "name": "2d.fillStyle.parse.rgb-eof",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.rgb-eof"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "251",
+          "name": "2d.fillStyle.parse.invalid.hsla-2",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.invalid.hsla-2"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "252",
+          "name": "2d.fillStyle.parse.invalid.hsla-3",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.invalid.hsla-3"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "187",
+          "name": "2d.fillStyle.parse.hsl-clamp-4",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.hsl-clamp-4"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "184",
+          "name": "2d.fillStyle.parse.hsl-clamp-1",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.hsl-clamp-1"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "186",
+          "name": "2d.fillStyle.parse.hsl-clamp-3",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.hsl-clamp-3"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Bad color value"
+          ],
+          "contexts": "1",
+          "id": "185",
+          "name": "2d.fillStyle.parse.hsl-clamp-2",
+          "width": "100",
+          "height": "50",
+          "description": "2d.fillStyle.parse.hsl-clamp-2"
+        }
+      ]
+    },
+    "2d.drawImage": {
+      "name": "2d.drawImage",
+      "succeeded": false,
+      "failureInspectionURL": "http://127.0.0.1:8081/2d.drawImage.html?noCleanup&runTests=659,642,649,",
+      "failedTests": [
+        {
+          "failureMessages": [
+            "function() { ctx.drawImage(canvas2, 0, 0); }",
+            "function() { ctx.drawImage(canvas2, 0, 0); }",
+            "function() { ctx.drawImage(canvas2, 0, 0); }",
+            "function() { ctx.drawImage(canvas2, 0, 0); }",
+            "function() { ctx.drawImage(canvas2, 0, 0); }",
+            "function() { ctx.drawImage(canvas2, 0, 0); }"
+          ],
+          "contexts": "2",
+          "id": "659",
+          "name": "2d.drawImage.zerocanvas",
+          "width": "100",
+          "height": "50",
+          "description": "2d.drawImage.zerocanvas (drawImage with zero-sized canvas as the source shoud throw exception)"
+        },
+        {
+          "failureMessages": [
+            "Green channel of the pixel at (0, 0): expected around 255 got 0",
+            "Green channel of the pixel at (99, 0): expected around 255 got 0",
+            "Green channel of the pixel at (0, 49): expected around 255 got 0",
+            "Green channel of the pixel at (99, 49): expected around 255 got 0"
+          ],
+          "contexts": "2",
+          "id": "642",
+          "name": "2d.drawImage.canvas",
+          "width": "100",
+          "height": "50",
+          "description": "2d.drawImage.canvas"
+        },
+        {
+          "failureMessages": [
+            "[object Event]"
+          ],
+          "contexts": "1",
+          "id": "649",
+          "name": "2d.drawImage.zerosource.image",
+          "width": "100",
+          "height": "50",
+          "description": "2d.drawImage.zerosource.image (drawImage with zero-sized source rectangle from image throws INDEX_SIZE_ERR)"
+        }
+      ]
+    },
+    "2d.gradient": {
+      "name": "2d.gradient",
+      "succeeded": false,
+      "failureInspectionURL": "http://127.0.0.1:8081/2d.gradient.html?noCleanup&runTests=308,297,296,322,",
+      "failedTests": [
+        {
+          "failureMessages": [
+            "function() { g.addColorStop(0, \"\"); }",
+            "function() { g.addColorStop(0, 'rgb(NaN%, NaN%, NaN%)'); }",
+            "function() { g.addColorStop(0, 'null'); }",
+            "function() { g.addColorStop(0, 'undefined'); }",
+            "function() { g.addColorStop(0, null); }",
+            "function() { g.addColorStop(0, undefined); }",
+            "function() { g.addColorStop(0, \"\"); }",
+            "function() { g.addColorStop(0, 'rgb(NaN%, NaN%, NaN%)'); }",
+            "function() { g.addColorStop(0, 'null'); }",
+            "function() { g.addColorStop(0, 'undefined'); }",
+            "function() { g.addColorStop(0, null); }",
+            "function() { g.addColorStop(0, undefined); }"
+          ],
+          "contexts": "1",
+          "id": "308",
+          "name": "2d.gradient.object.invalidcolour",
+          "width": "100",
+          "height": "50",
+          "description": "2d.gradient.object.invalidcolour"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Could not find supported font family"
+          ],
+          "contexts": "1",
+          "id": "297",
+          "name": "2d.gradient.interpolate.zerosize.strokeText",
+          "width": "100",
+          "height": "50",
+          "description": "2d.gradient.interpolate.zerosize.strokeText"
+        },
+        {
+          "failureMessages": [
+            "SyntaxError: Could not find supported font family"
+          ],
+          "contexts": "1",
+          "id": "296",
+          "name": "2d.gradient.interpolate.zerosize.fillText",
+          "width": "100",
+          "height": "50",
+          "description": "2d.gradient.interpolate.zerosize.fillText"
+        },
+        {
+          "failureMessages": [
+            "Red channel of the pixel at (1, 1): expected 0 got 255",
+            "Green channel of the pixel at (1, 1): expected 255 got 0",
+            "Red channel of the pixel at (50, 1): expected 0 got 255",
+            "Green channel of the pixel at (50, 1): expected 255 got 0",
+            "Red channel of the pixel at (98, 1): expected 0 got 255",
+            "Green channel of the pixel at (98, 1): expected 255 got 0",
+            "Red channel of the pixel at (98, 25): expected 0 got 255",
+            "Green channel of the pixel at (98, 25): expected 255 got 0",
+            "Red channel of the pixel at (1, 48): expected 0 got 255",
+            "Green channel of the pixel at (1, 48): expected 255 got 0"
+          ],
+          "contexts": "1",
+          "id": "322",
+          "name": "2d.gradient.radial.touch2",
+          "width": "100",
+          "height": "50",
+          "description": "2d.gradient.radial.touch2"
+        }
+      ]
+    },
+    "2d.pattern": {
+      "name": "2d.pattern",
+      "succeeded": false,
+      "failureInspectionURL": "http://127.0.0.1:8081/2d.pattern.html?noCleanup&runTests=379,338,359,360,336,351,340,",
+      "failedTests": [
+        {
+          "failureMessages": [
+            "Green channel of the pixel at (1, 48): expected 255 got 0",
+            "Green channel of the pixel at (98, 48): expected 255 got 0"
+          ],
+          "contexts": "2",
+          "id": "379",
+          "name": "2d.pattern.paint.orientation.canvas",
+          "width": "100",
+          "height": "50",
+          "description": "2d.pattern.paint.orientation.canvas (Canvas patterns do not get flipped when painted)"
+        },
+        {
+          "failureMessages": [
+            "Green channel of the pixel at (1, 1): expected 255 got 0",
+            "Green channel of the pixel at (50, 1): expected 255 got 0",
+            "Green channel of the pixel at (98, 1): expected 255 got 0",
+            "Green channel of the pixel at (1, 25): expected 255 got 0",
+            "Green channel of the pixel at (50, 25): expected 255 got 0",
+            "Green channel of the pixel at (98, 25): expected 255 got 0",
+            "Green channel of the pixel at (1, 48): expected 255 got 0",
+            "Green channel of the pixel at (50, 48): expected 255 got 0",
+            "Green channel of the pixel at (98, 48): expected 255 got 0"
+          ],
+          "contexts": "2",
+          "id": "338",
+          "name": "2d.pattern.basic.canvas",
+          "width": "100",
+          "height": "50",
+          "description": "2d.pattern.basic.canvas"
+        },
+        {
+          "failureMessages": [
+            "Green channel of the pixel at (1, 1): expected 255 got 0",
+            "Green channel of the pixel at (98, 1): expected 255 got 0",
+            "Green channel of the pixel at (1, 48): expected 255 got 0",
+            "Green channel of the pixel at (98, 48): expected 255 got 0"
+          ],
+          "contexts": "2",
+          "id": "359",
+          "name": "2d.pattern.modify.canvas1",
+          "width": "100",
+          "height": "50",
+          "description": "2d.pattern.modify.canvas1"
+        },
+        {
+          "failureMessages": [
+            "Green channel of the pixel at (1, 1): expected 255 got 0",
+            "Green channel of the pixel at (98, 1): expected 255 got 0",
+            "Green channel of the pixel at (1, 48): expected 255 got 0",
+            "Green channel of the pixel at (98, 48): expected 255 got 0"
+          ],
+          "contexts": "2",
+          "id": "360",
+          "name": "2d.pattern.modify.canvas2",
+          "width": "100",
+          "height": "50",
+          "description": "2d.pattern.modify.canvas2"
+        },
+        {
+          "failureMessages": [
+            "ReferenceError: actual is not defined"
+          ],
+          "contexts": "1",
+          "id": "336",
+          "name": "2d.pattern.basic.type",
+          "width": "100",
+          "height": "50",
+          "description": "2d.pattern.basic.type"
+        },
+        {
+          "failureMessages": [
+            "ReferenceError: actual is not defined"
+          ],
+          "contexts": "1",
+          "id": "351",
+          "name": "2d.pattern.repeat.null",
+          "width": "100",
+          "height": "50",
+          "description": "2d.pattern.repeat.null"
+        },
+        {
+          "failureMessages": [
+            "Green channel of the pixel at (1, 1): expected 255 got 0",
+            "Green channel of the pixel at (98, 1): expected 255 got 0",
+            "Green channel of the pixel at (1, 48): expected 255 got 0",
+            "Green channel of the pixel at (98, 48): expected 255 got 0"
+          ],
+          "contexts": "2",
+          "id": "340",
+          "name": "2d.pattern.basic.nocontext",
+          "width": "100",
+          "height": "50",
+          "description": "2d.pattern.basic.nocontext"
+        }
+      ]
+    },
+    "2d.state": {
+      "name": "2d.state",
+      "succeeded": false,
+      "failureInspectionURL": "http://127.0.0.1:8081/2d.state.html?noCleanup&runTests=27,",
+      "failedTests": [
+        {
+          "failureMessages": [
+            "SyntaxError: Could not find supported font family"
+          ],
+          "contexts": "1",
+          "id": "27",
+          "name": "2d.state.saverestore.font",
+          "width": "100",
+          "height": "50",
+          "description": "2d.state.saverestore.font (save()/restore() works for font)"
+        }
+      ]
+    },
+    "2d.strokeRect": {
+      "name": "2d.strokeRect",
+      "succeeded": false,
+      "failureInspectionURL": "http://127.0.0.1:8081/2d.strokeRect.html?noCleanup&runTests=493,",
+      "failedTests": [
+        {
+          "failureMessages": [
+            "Red channel of the pixel at (50, 25): expected 0 got 255",
+            "Alpha channel of the pixel at (50, 25): expected 0 got 255"
+          ],
+          "contexts": "1",
+          "id": "493",
+          "name": "2d.strokeRect.zero.4",
+          "width": "100",
+          "height": "50",
+          "description": "2d.strokeRect.zero.4 (strokeRect of Nx0 pixels draws a closed line with no caps)"
+        }
+      ]
+    }
+  }
+}
