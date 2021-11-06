@@ -1,18 +1,52 @@
-import { FlatList, SafeAreaView, StyleSheet, Text, View } from "react-native";
+import {
+  FlatList,
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import React from "react";
+import { Searchbar } from "react-native-paper";
 import data from "./ligands.json";
+import { useHistory } from "react-router-native";
+
 const List = () => {
-  // const [data, setdata] = React.useState([]);
+  const history = useHistory();
+  const [listData, setdata] = React.useState(data);
+  const [searchQuery, setSearchQuery] = React.useState("");
+  const onHandleChange = (query) => {
+    if (query === "") setdata(data);
+    setSearchQuery(query);
+    var regex = new RegExp(query, "g");
+    let tmp = data.filter((el) => el.match(regex));
+    setdata(tmp);
+  };
   const renderItem = ({ item }) => (
     <View style={styles.item}>
-      <Text style={styles.text}>{item}</Text>
+      <TouchableOpacity
+        onPress={() =>
+          history.push({
+            pathname: "Viewproteins",
+            ligand: item,
+          })
+        }
+      >
+        <Text style={styles.text}>{item}</Text>
+      </TouchableOpacity>
     </View>
   );
+
   return (
     <SafeAreaView style={styles.container}>
+      <Searchbar
+        placeholder="Search"
+        onChangeText={onHandleChange}
+        value={searchQuery}
+      />
       <FlatList
         style={styles.list}
-        data={data}
+        data={listData}
         renderItem={renderItem}
         keyExtractor={(item) => item.id}
       />
@@ -23,8 +57,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#c0c5ce",
-    alignItems: "center",
-    justifyContent: "center",
   },
   item: {
     shadowColor: "#000",
@@ -37,8 +69,9 @@ const styles = StyleSheet.create({
   },
   text: {
     color: "#fff",
-    textAlign: "center",
+    textAlign: "left",
     padding: 10,
+    fontSize: 15,
   },
   list: {
     width: "100%",
