@@ -7,8 +7,8 @@ import { PDBLoader } from "three/examples/jsm/loaders/PDBLoader.js";
 import Axios from "axios";
 const ViewProtein = (props) => {
   const [data, setdata] = useState([]);
-  // const { ligand } = props.location;
-  const ligand = "011";
+  const { ligand } = props.location;
+  // const ligand = "011";
 
   useEffect(() => {
     Axios(
