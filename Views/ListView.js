@@ -27,7 +27,7 @@ const List = () => {
       <TouchableOpacity
         onPress={() =>
           history.push({
-            pathname: "Viewproteins",
+            pathname: "ViewProtein",
             ligand: item,
           })
         }
@@ -48,14 +48,13 @@ const List = () => {
         style={styles.list}
         data={listData}
         renderItem={renderItem}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(item) => item}
       />
     </SafeAreaView>
   );
 };
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: "#c0c5ce",
   },
   item: {
