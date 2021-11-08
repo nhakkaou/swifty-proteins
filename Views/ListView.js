@@ -9,10 +9,10 @@ import {
 import React from "react";
 import { Searchbar } from "react-native-paper";
 import data from "./ligands.json";
-import { useHistory } from "react-router-native";
+// import { useHistory } from "react-router-native";
 
 const List = () => {
-  const history = useHistory();
+  // const history = useHistory();
   const [listData, setdata] = React.useState(data);
   const [searchQuery, setSearchQuery] = React.useState("");
   const onHandleChange = (query) => {
@@ -24,7 +24,7 @@ const List = () => {
   };
   const renderItem = ({ item }) => (
     <View style={styles.item}>
-      <TouchableOpacity
+      {/* <TouchableOpacity
         onPress={() =>
           history.push({
             pathname: "ViewProtein",
@@ -33,7 +33,7 @@ const List = () => {
         }
       >
         <Text style={styles.text}>{item}</Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
     </View>
   );
 

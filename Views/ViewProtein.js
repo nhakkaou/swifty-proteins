@@ -3,18 +3,18 @@ import { Renderer } from "expo-three";
 import * as THREE from "three";
 import React, { useEffect, useState } from "react";
 import { View, Text, SafeAreaView, useWindowDimensions } from "react-native";
-import { useHistory } from "react-router-native";
+// import { useHistory } from "react-router-native";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import Axios from "axios";
 import Colors from "./CPK_Colors.json";
 import parsePdb from "parse-pdb";
 const ViewProtein = (props) => {
-  const history = useHistory();
+  // const history = useHistory();
   const [data, setdata] = useState([]);
   const [mount, setMounted] = useState(true);
   const [Atoms, setAtoms] = useState([]);
-  const { ligand } = props.location;
-  // const ligand = "1KU";
+  // const { ligand } = props.location;
+  const ligand = "001";
 
   useEffect(() => {
     Axios(
@@ -33,6 +33,7 @@ const ViewProtein = (props) => {
 
   const { height, width } = useWindowDimensions();
   const geo = new THREE.SphereGeometry();
+  const cylinderGeometry = new THREE.CylinderGeometry();
   const material = new THREE.MeshStandardMaterial({
     color: 0xfff000,
   });
@@ -87,14 +88,13 @@ const ViewProtein = (props) => {
               camera.lookAt(0, 0, 0);
               /**********Use PDB PARSER */
               console.log(Atoms);
+              let t = width / height;
               const position = new THREE.Vector3();
               for (let i = 0; i < Atoms.atoms?.length; i++) {
                 position.x = Atoms.atoms[i].x;
                 position.y = Atoms.atoms[i].y;
                 position.z = Atoms.atoms[i].z;
-                console.log(
-                  new THREE.Color("#" + Colors[Atoms.atoms[i].element].jmol)
-                );
+
                 let color = new THREE.Color(
                   "#" + Colors[Atoms.atoms[i].element].jmol
                 );
@@ -103,7 +103,33 @@ const ViewProtein = (props) => {
                   shininess: 50,
                 });
                 let object = new THREE.Mesh(geo, mtrl);
+                position.multiplyScalar(width / height + 1);
                 object.position.copy(position);
+                scene.add(object);
+              }
+              /**************** ADD BOX */
+              const start = new THREE.Vector3();
+              const end = new THREE.Vector3();
+              for (let i = 0; i < Atoms.atoms?.length; i++) {
+                start.x = Atoms.atoms[0].x;
+                start.y = Atoms.atoms[0].y;
+                start.z = Atoms.atoms[0].z;
+
+                end.x = Atoms.atoms[0 + 1]?.x;
+                end.y = Atoms.atoms[0 + 1]?.y;
+                end.z = Atoms.atoms[0 + 1]?.z;
+
+                start.multiplyScalar(width / height + 2);
+                end.multiplyScalar(width / height + 2);
+
+                const object = new THREE.Mesh(
+                  cylinderGeometry,
+                  new THREE.MeshPhongMaterial(0xffffff)
+                );
+                object.position.copy(start);
+                object.position.lerp(end, 0.5);
+                object.scale.set(0.5, 0.5, start.distanceTo(end));
+                object.lookAt(end);
                 scene.add(object);
               }
               /************** */
@@ -212,12 +238,12 @@ const ViewProtein = (props) => {
             <Text style={{ color: "#FFF", fontSize: 16, padding: 5 }}>
               Atom:
             </Text>
-            <MaterialCommunityIcons
+            {/* <MaterialCommunityIcons
               onPress={() => history.push("/list")}
               style={{ color: "#fff", padding: 5 }}
               size={25}
               name="keyboard-backspace"
-            />
+            /> */}
           </View>
         </>
       )}
