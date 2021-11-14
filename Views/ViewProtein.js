@@ -1,6 +1,7 @@
 import { GLView } from "expo-gl";
 import { Renderer } from "expo-three";
 import * as THREE from "three";
+import matchAll from "string.prototype.matchall";
 import React, { useEffect, useState } from "react";
 import { View, Text, SafeAreaView, Dimensions } from "react-native";
 import { useHistory } from "react-router-native";
@@ -9,6 +10,8 @@ import Axios from "axios";
 import Colors from "./CPK_Colors.json";
 import getConnect from "../Helpers/PdbParse_Connect";
 import parsePdb from "parse-pdb";
+import OrbitControlsView from "expo-three-orbit-controls";
+
 const ViewProtein = (props) => {
   const history = useHistory();
   const [connects, setConnects] = useState([
@@ -74,16 +77,18 @@ const ViewProtein = (props) => {
       z: 5,
     },
   ];
+
   useEffect(() => {
     Axios(url2)
       .then((res) => {
         console.log("data", res.data);
-
-        setConnects(getConnect(res.data));
-        setAtoms(parsePdb(res.data));
-        // setAtoms({ atoms: str });
-
-        setMounted(false);
+        if (res.data) {
+          const array = [...matchAll(res.data, /^CONECT(:?\s*\d+.+)+/gm)];
+          console.log(getConnect(array));
+          setAtoms(parsePdb(res.data));
+          setConnects(getConnect(array));
+          setMounted(false);
+        }
       })
       .catch((er) => alert(er));
   }, []);
@@ -102,7 +107,12 @@ const ViewProtein = (props) => {
   useEffect(() => console.log(width, height), [width, height]);
 
   const geo = new THREE.SphereGeometry();
-
+  const camera = new THREE.PerspectiveCamera(
+    75,
+    width < height ? width / height : height / width,
+    0.1,
+    1000
+  );
   let cameraInitialPositionX = 0;
   let cameraInitialPositionY = 2;
   let cameraInitialPositionZ = 50;
@@ -112,6 +122,7 @@ const ViewProtein = (props) => {
         <Text>HIII</Text>
       ) : (
         <>
+          {/* <OrbitControlsView style={{ flex: 1 }} camera={camera}> */}
           <GLView
             style={{ width: width, height: height }}
             onContextCreate={async (gl) => {
@@ -121,12 +132,7 @@ const ViewProtein = (props) => {
               const renderer = new Renderer({ gl });
               renderer.setClearColor("#000");
               renderer.setSize(width, height);
-              const camera = new THREE.PerspectiveCamera(
-                75,
-                width < height ? width / height : height / width,
-                0.1,
-                1000
-              );
+
               camera.position.set(
                 cameraInitialPositionX,
                 cameraInitialPositionY,
@@ -195,13 +201,15 @@ const ViewProtein = (props) => {
 
               const render = () => {
                 requestAnimationFrame(render);
-                scene.rotation.y += 1;
+                camera.rotation.y += 0.01;
+                ambientLight.rotation.y += 0.01;
                 renderer.render(scene, camera);
                 gl.endFrameEXP();
               };
               render();
             }}
           />
+          {/* </OrbitControlsView> */}
           <View style={{ backgroundColor: "0xFFFFFF" }}>
             <Text style={{ color: "#FFF", fontSize: 16, padding: 5 }}>
               Atom:

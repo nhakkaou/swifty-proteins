@@ -17,6 +17,7 @@
     "expo-local-authentication": "~12.0.1",
     "expo-status-bar": "~1.1.0",
     "expo-three": "^6.0.1",
+    "expo-three-orbit-controls": "^2.0.0",
     "parse-pdb": "^1.0.0",
     "react": "17.0.1",
     "react-dom": "17.0.1",
@@ -25,6 +26,7 @@
     "react-native-vector-icons": "^9.0.0",
     "react-native-web": "0.17.1",
     "react-router-native": "^5.2.1",
+    "string.prototype.matchall": "^4.0.6",
     "three": "^0.134.0"
   },
   "devDependencies": {
