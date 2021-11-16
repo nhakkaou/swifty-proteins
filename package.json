@@ -27,7 +27,8 @@
     "react-native-web": "0.17.1",
     "react-router-native": "^5.2.1",
     "string.prototype.matchall": "^4.0.6",
-    "three": "^0.134.0"
+    "three": "^0.134.0",
+    "three.interaction": "^0.2.3"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"
