@@ -26,15 +26,13 @@ const ViewProtein = (props) => {
   const [height, setHeight] = useState(Dimensions.get("screen").height - 10);
 
   useEffect(() => {
-    console.log("WIDTH", width / 2);
     Axios(url1)
       .then((res) => {
         if (res.data) {
           let array = [...matchAll(res.data, /^CONECT(:?\s*\d+.+)+/gm)];
           let atomsPdb = parsePdb(res.data);
           console.log(res.data);
-          console.table(atomsPdb.atoms);
-          setAtoms(atomsPdb);
+          setAtoms(atomsPdb.atoms);
           array = array.filter((el, key) => key < atomsPdb.atoms?.length);
           setConnects(getConnect(array));
           setMounted(false);
@@ -50,7 +48,7 @@ const ViewProtein = (props) => {
 
     return () => subscription?.remove();
   }, []);
-  console.log("LENGTH", Atoms.atoms?.length);
+  console.log("LENGTH", Atoms?.length);
   const geo = new THREE.SphereGeometry();
   const camera = new THREE.PerspectiveCamera(
     75,
@@ -60,7 +58,7 @@ const ViewProtein = (props) => {
   );
   let cameraInitialPositionX = 0;
   let cameraInitialPositionY = 2;
-  let cameraInitialPositionZ = 500;
+  let cameraInitialPositionZ = 50;
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#000" }}>
@@ -80,14 +78,10 @@ const ViewProtein = (props) => {
                 const renderer = new Renderer({ gl });
                 renderer.setClearColor("#000");
                 renderer.setSize(width, height);
-                camera.position.set(
-                  cameraInitialPositionX,
-                  cameraInitialPositionY,
-                  cameraInitialPositionZ
-                );
-                // camera.lookAt(0, 0, 0);
+                camera.position.copy(Atoms[0]);
+                camera.lookAt(Atoms[0]);
                 const scene = new THREE.Scene();
-                console.log(scene.);
+
                 const ambientLight = new THREE.DirectionalLight(0xffffff, 0.9);
                 ambientLight.position.set(
                   cameraInitialPositionX,
@@ -95,21 +89,16 @@ const ViewProtein = (props) => {
                   cameraInitialPositionZ
                 );
                 scene.add(ambientLight);
-                camera.lookAt(
-                  Atoms.atoms[0]?.x,
-                  Atoms.atoms[0]?.y,
-                  Atoms.atoms[0]?.z
-                );
 
                 /**********Use PDB PARSER */
                 const position = new THREE.Vector3();
-                for (let i = 0; i < Atoms.atoms?.length; i++) {
-                  position.x = Atoms.atoms[i].x;
-                  position.y = Atoms.atoms[i].y;
-                  position.z = Atoms.atoms[i].z;
-
+                for (let i = 0; i < Atoms?.length; i++) {
+                  position.x = Atoms[i].x > 10 ? Atoms[i].x / 2 : Atoms[i].x;
+                  position.y = Atoms[i].y > 10 ? Atoms[i].y / 2 : Atoms[i].y;
+                  position.z = Atoms[i].z > 10 ? Atoms[i].z / 2 : Atoms[i].z;
+                  console.log(position);
                   let color = new THREE.Color(
-                    "#" + Colors[Atoms.atoms[i].element].jmol
+                    "#" + Colors[Atoms[i].element].jmol
                   );
                   const mtrl = new THREE.MeshPhongMaterial({
                     color: color,
@@ -122,35 +111,35 @@ const ViewProtein = (props) => {
                 }
                 const start = new THREE.Vector3();
                 const end = new THREE.Vector3();
-                for (let j = 0; j < connects.length; j++) {
-                  for (let i = 1; i < connects[j].length; i++) {
-                    if (connects[j][i] - 1 < Atoms.atoms.length) {
-                      start.x = Atoms.atoms[connects[j][0] - 1].x;
-                      start.y = Atoms.atoms[connects[j][0] - 1].y;
-                      start.z = Atoms.atoms[connects[j][0] - 1].z;
+                // for (let j = 0; j < connects.length; j++) {
+                //   for (let i = 1; i < connects[j].length; i++) {
+                //     if (connects[j][i] - 1 < Atoms.length) {
+                //       start.x = Atoms[connects[j][0] - 1].x / 2;
+                //       start.y = Atoms[connects[j][0] - 1].y / 2;
+                //       start.z = Atoms[connects[j][0] - 1].z / 2;
 
-                      end.x = Atoms.atoms[connects[j][i] - 1].x;
-                      end.y = Atoms.atoms[connects[j][i] - 1].y;
-                      end.z = Atoms.atoms[connects[j][i] - 1].z;
+                //       end.x = Atoms[connects[j][i] - 1].x / 2;
+                //       end.y = Atoms[connects[j][i] - 1].y / 2;
+                //       end.z = Atoms[connects[j][i] - 1].z / 2;
 
-                      start.multiplyScalar(width / height + 1);
-                      end.multiplyScalar(width / height + 1);
-                      const geoBox = new THREE.BoxGeometry(
-                        0.5,
-                        0.5,
-                        start.distanceTo(end)
-                      );
-                      const cylinder = new THREE.Mesh(
-                        geoBox,
-                        new THREE.MeshPhongMaterial({ color: 0xffffff })
-                      );
-                      cylinder.position.copy(start);
-                      cylinder.position.lerp(end, 0.5);
-                      cylinder.lookAt(end);
-                      scene.add(cylinder);
-                    }
-                  }
-                }
+                //       start.multiplyScalar(width / height + 1);
+                //       end.multiplyScalar(width / height + 1);
+                //       const geoBox = new THREE.BoxGeometry(
+                //         0.5,
+                //         0.5,
+                //         start.distanceTo(end)
+                //       );
+                //       const cylinder = new THREE.Mesh(
+                //         geoBox,
+                //         new THREE.MeshPhongMaterial({ color: 0xffffff })
+                //       );
+                //       cylinder.position.copy(start);
+                //       cylinder.position.lerp(end, 0.5);
+                //       cylinder.lookAt(end);
+                //       scene.add(cylinder);
+                //     }
+                //   }
+                // }
 
                 /************** */
 
