@@ -8,7 +8,7 @@ import { View, Text, SafeAreaView, Dimensions } from "react-native";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import Axios from "axios";
 import Colors from "./CPK_Colors.json";
-import getConnect from "../Helpers/PdbParse_Connect";
+import { getConnect, mapAtoms } from "../Helpers/PdbParse_Connect";
 import parsePdb from "parse-pdb";
 import OrbitControlsView from "expo-three-orbit-controls";
 
@@ -18,10 +18,8 @@ const ViewProtein = (props) => {
   const [mount, setMounted] = useState(true);
   const [Atoms, setAtoms] = useState([]);
   // const { ligand } = props.location;
-  const ligand = "011";
+  const ligand = "UO1";
   const url1 = `https://files.rcsb.org/ligands/view/${ligand}_model.pdb`;
-  const url2 =
-    "https://files.rcsb.org/ligands/0/" + ligand + "/" + ligand + "_ideal.pdb";
   const [width, setWidth] = useState(Dimensions.get("screen").width);
   const [height, setHeight] = useState(Dimensions.get("screen").height - 10);
 
@@ -31,8 +29,8 @@ const ViewProtein = (props) => {
         if (res.data) {
           let array = [...matchAll(res.data, /^CONECT(:?\s*\d+.+)+/gm)];
           let atomsPdb = parsePdb(res.data);
-          console.log(res.data);
-          setAtoms(atomsPdb.atoms);
+          let newAtoms = mapAtoms(atomsPdb.atoms);
+          setAtoms(newAtoms);
           array = array.filter((el, key) => key < atomsPdb.atoms?.length);
           setConnects(getConnect(array));
           setMounted(false);
@@ -40,12 +38,15 @@ const ViewProtein = (props) => {
       })
       .catch((er) => alert(er));
   }, []);
+  function mouseClick(e) {
+    console.log(e.x, e.y);
+  }
+  // window.addEventListener("mousemove", mouseClick);
   useEffect(() => {
     const subscription = Dimensions.addEventListener("change", () => {
       setWidth(Dimensions.get("screen").width);
       setHeight(Dimensions.get("screen").height - 30);
     });
-
     return () => subscription?.remove();
   }, []);
   console.log("LENGTH", Atoms?.length);
@@ -56,9 +57,6 @@ const ViewProtein = (props) => {
     0.1,
     1000
   );
-  let cameraInitialPositionX = 0;
-  let cameraInitialPositionY = 2;
-  let cameraInitialPositionZ = 50;
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#000" }}>
@@ -66,7 +64,7 @@ const ViewProtein = (props) => {
         <Text>HIII</Text>
       ) : (
         <>
-          <OrbitControlsView style={{ flex: 1 }} camera={camera}>
+          <OrbitControlsView style={{ flex: 2 }} camera={camera}>
             <GLView
               style={{ width: width, height: height }}
               onContextCreate={async (gl) => {
@@ -74,29 +72,25 @@ const ViewProtein = (props) => {
                   drawingBufferWidth: width,
                   drawingBufferHeight: height,
                 } = gl;
-
+                console.log(width, height, camera.position.z);
                 const renderer = new Renderer({ gl });
                 renderer.setClearColor("#000");
                 renderer.setSize(width, height);
-                camera.position.copy(Atoms[0]);
-                camera.lookAt(Atoms[0]);
+                camera.position.set(0, 2, 60);
+                camera.lookAt(0, 0, 0);
                 const scene = new THREE.Scene();
-
                 const ambientLight = new THREE.DirectionalLight(0xffffff, 0.9);
-                ambientLight.position.set(
-                  cameraInitialPositionX,
-                  cameraInitialPositionY,
-                  cameraInitialPositionZ
-                );
+                ambientLight.position.copy(camera.position);
                 scene.add(ambientLight);
-
+                console.log("camera", camera);
+                console.log("Light", ambientLight.position);
+                console.log("scene", scene);
                 /**********Use PDB PARSER */
                 const position = new THREE.Vector3();
                 for (let i = 0; i < Atoms?.length; i++) {
-                  position.x = Atoms[i].x > 10 ? Atoms[i].x / 2 : Atoms[i].x;
-                  position.y = Atoms[i].y > 10 ? Atoms[i].y / 2 : Atoms[i].y;
-                  position.z = Atoms[i].z > 10 ? Atoms[i].z / 2 : Atoms[i].z;
-                  console.log(position);
+                  position.x = Atoms[i].x;
+                  position.y = Atoms[i].y;
+                  position.z = Atoms[i].z;
                   let color = new THREE.Color(
                     "#" + Colors[Atoms[i].element].jmol
                   );
@@ -105,41 +99,46 @@ const ViewProtein = (props) => {
                     shininess: 50,
                   });
                   let object = new THREE.Mesh(geo, mtrl);
-                  position.multiplyScalar(width / height + 1);
+                  position.multiplyScalar(
+                    width > height ? width / height + 1 : height / width + 1
+                  );
                   object.position.copy(position);
                   scene.add(object);
                 }
                 const start = new THREE.Vector3();
                 const end = new THREE.Vector3();
-                // for (let j = 0; j < connects.length; j++) {
-                //   for (let i = 1; i < connects[j].length; i++) {
-                //     if (connects[j][i] - 1 < Atoms.length) {
-                //       start.x = Atoms[connects[j][0] - 1].x / 2;
-                //       start.y = Atoms[connects[j][0] - 1].y / 2;
-                //       start.z = Atoms[connects[j][0] - 1].z / 2;
+                for (let j = 0; j < connects.length; j++) {
+                  for (let i = 1; i < connects[j].length; i++) {
+                    if (connects[j][i] - 1 < Atoms.length) {
+                      start.x = Atoms[connects[j][0] - 1].x;
+                      start.y = Atoms[connects[j][0] - 1].y;
+                      start.z = Atoms[connects[j][0] - 1].z;
+                      end.x = Atoms[connects[j][i] - 1].x;
+                      end.y = Atoms[connects[j][i] - 1].y;
+                      end.z = Atoms[connects[j][i] - 1].z;
 
-                //       end.x = Atoms[connects[j][i] - 1].x / 2;
-                //       end.y = Atoms[connects[j][i] - 1].y / 2;
-                //       end.z = Atoms[connects[j][i] - 1].z / 2;
-
-                //       start.multiplyScalar(width / height + 1);
-                //       end.multiplyScalar(width / height + 1);
-                //       const geoBox = new THREE.BoxGeometry(
-                //         0.5,
-                //         0.5,
-                //         start.distanceTo(end)
-                //       );
-                //       const cylinder = new THREE.Mesh(
-                //         geoBox,
-                //         new THREE.MeshPhongMaterial({ color: 0xffffff })
-                //       );
-                //       cylinder.position.copy(start);
-                //       cylinder.position.lerp(end, 0.5);
-                //       cylinder.lookAt(end);
-                //       scene.add(cylinder);
-                //     }
-                //   }
-                // }
+                      start.multiplyScalar(
+                        width > height ? width / height + 1 : height / width + 1
+                      );
+                      end.multiplyScalar(
+                        width > height ? width / height + 1 : height / width + 1
+                      );
+                      const geoBox = new THREE.BoxGeometry(
+                        0.5,
+                        0.5,
+                        start.distanceTo(end)
+                      );
+                      const cylinder = new THREE.Mesh(
+                        geoBox,
+                        new THREE.MeshPhongMaterial({ color: 0xffffff })
+                      );
+                      cylinder.position.copy(start);
+                      cylinder.position.lerp(end, 0.5);
+                      cylinder.lookAt(end);
+                      scene.add(cylinder);
+                    }
+                  }
+                }
 
                 /************** */
 
@@ -165,7 +164,7 @@ const ViewProtein = (props) => {
               Atom:
             </Text>
             <MaterialCommunityIcons
-              onPress={() => history.push("/list")}
+              // onPress={() => history.push("/list")}
               style={{ color: "#fff", padding: 5 }}
               size={35}
               name="keyboard-backspace"
