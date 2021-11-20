@@ -4,7 +4,7 @@ import * as THREE from "three";
 import matchAll from "string.prototype.matchall";
 import React, { useEffect, useState } from "react";
 import { View, Text, SafeAreaView, Dimensions } from "react-native";
-// import { useHistory } from "react-router-native";
+import { useHistory } from "react-router-native";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import Axios from "axios";
 import Colors from "./CPK_Colors.json";
@@ -13,12 +13,12 @@ import parsePdb from "parse-pdb";
 import OrbitControlsView from "expo-three-orbit-controls";
 
 const ViewProtein = (props) => {
-  // const history = useHistory();
+  const history = useHistory();
   const [connects, setConnects] = useState([]);
   const [mount, setMounted] = useState(true);
   const [Atoms, setAtoms] = useState([]);
-  // const { ligand } = props.location;
-  const ligand = "UO1";
+  const { ligand } = props.location;
+
   const url1 = `https://files.rcsb.org/ligands/view/${ligand}_model.pdb`;
   const [width, setWidth] = useState(Dimensions.get("screen").width);
   const [height, setHeight] = useState(Dimensions.get("screen").height - 10);
@@ -38,10 +38,7 @@ const ViewProtein = (props) => {
       })
       .catch((er) => alert(er));
   }, []);
-  function mouseClick(e) {
-    console.log(e.x, e.y);
-  }
-  // window.addEventListener("mousemove", mouseClick);
+
   useEffect(() => {
     const subscription = Dimensions.addEventListener("change", () => {
       setWidth(Dimensions.get("screen").width);
@@ -164,7 +161,7 @@ const ViewProtein = (props) => {
               Atom:
             </Text>
             <MaterialCommunityIcons
-              // onPress={() => history.push("/list")}
+              onPress={() => history.push("/list")}
               style={{ color: "#fff", padding: 5 }}
               size={35}
               name="keyboard-backspace"
