@@ -11,18 +11,29 @@ import Colors from "./CPK_Colors.json";
 import { getConnect, mapAtoms } from "../Helpers/PdbParse_Connect";
 import parsePdb from "parse-pdb";
 import OrbitControlsView from "expo-three-orbit-controls";
+import * as Sharing from "expo-sharing";
 
 const ViewProtein = (props) => {
   const history = useHistory();
   const [connects, setConnects] = useState([]);
   const [mount, setMounted] = useState(true);
+  const [share, setShareAv] = useState(false);
   const [Atoms, setAtoms] = useState([]);
+  const [Gl, setGl] = useState();
   const { ligand } = props.location;
-
-  const url1 = `https://files.rcsb.org/ligands/view/${ligand}_model.pdb`;
   const [width, setWidth] = useState(Dimensions.get("screen").width);
   const [height, setHeight] = useState(Dimensions.get("screen").height - 10);
+  const url1 = `https://files.rcsb.org/ligands/view/${ligand}_model.pdb`;
 
+  const snapshot = () => {
+    GLView.takeSnapshotAsync(Gl, { format: "jpeg" })
+      .then((r) => {
+        Sharing.shareAsync(r.localUri, {
+          dialogTitle: `${ligand} ligand Created by nhakkaou`,
+        });
+      })
+      .catch((er) => alert("error while take a snap try again"));
+  };
   useEffect(() => {
     Axios(url1)
       .then((res) => {
@@ -34,6 +45,7 @@ const ViewProtein = (props) => {
           array = array.filter((el, key) => key < atomsPdb.atoms?.length);
           setConnects(getConnect(array));
           setMounted(false);
+          Sharing.isAvailableAsync().then((r) => setShareAv(r));
         }
       })
       .catch((er) => alert(er));
@@ -69,7 +81,7 @@ const ViewProtein = (props) => {
                   drawingBufferWidth: width,
                   drawingBufferHeight: height,
                 } = gl;
-                console.log(width, height, camera.position.z);
+                setGl(gl);
                 const renderer = new Renderer({ gl });
                 renderer.setClearColor("#000");
                 renderer.setSize(width, height);
@@ -166,6 +178,16 @@ const ViewProtein = (props) => {
               size={35}
               name="keyboard-backspace"
             />
+            {share ? (
+              <MaterialCommunityIcons
+                onPress={snapshot}
+                style={{ color: "#fff", padding: 5 }}
+                size={35}
+                name="share"
+              />
+            ) : (
+              <Text></Text>
+            )}
           </View>
         </>
       )}
