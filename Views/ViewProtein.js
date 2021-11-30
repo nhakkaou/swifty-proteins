@@ -19,6 +19,7 @@ const ViewProtein = (props) => {
   const [connects, setConnects] = useState([]);
   const [mount, setMounted] = useState(true);
   const [Atoms, setAtoms] = useState([]);
+  const [atomSelected, setatomSelected] = useState({});
   // const { ligand } = props.location;
   const ligand = "UO1";
   const url1 = `https://files.rcsb.org/ligands/view/${ligand}_model.pdb`;
@@ -41,13 +42,7 @@ const ViewProtein = (props) => {
       .catch((er) => alert(er));
   }, []);
 
-  const handleStateChange = ({ nativeEvent }) => {
-    if (nativeEvent.state === State.ACTIVE) {
-      Alert.alert("Long Press", "Long Press");
-    }
-    console.log(nativeEvent.x, nativeEvent.y);
-  };
-  // window.addEventListener("mousemove", mouseClick);
+
   useEffect(() => {
     const subscription = Dimensions.addEventListener("change", () => {
       setWidth(Dimensions.get("screen").width);
@@ -57,13 +52,26 @@ const ViewProtein = (props) => {
   }, []);
   console.log("LENGTH", Atoms?.length);
   const geo = new THREE.SphereGeometry();
+  const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(
     75,
     width < height ? width / height : height / width,
     0.1,
     1000
   );
-
+  const raycaster = new THREE.Raycaster();
+  const handleStateChange = ({ nativeEvent }) => {
+    let mouse = new THREE.Vector2();
+    mouse.x = (nativeEvent.x / width) * 2 - 1;
+    mouse.y = -(nativeEvent.y / height) * 2 + 1;
+    raycaster.setFromCamera(mouse, camera);
+    // calculate objects intersecting the picking ray
+    const intersects = raycaster.intersectObjects(scene.children);
+    console.log("Selected", mouse.x, mouse.y);
+    if (intersects[0]?.object?.AtomsInfos)
+      // setatomSelected(intersects[0]?.object?.AtomsInfos);
+      console.log(intersects[0]?.object?.AtomsInfos);
+  };
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#000" }}>
       {mount ? (
@@ -85,7 +93,6 @@ const ViewProtein = (props) => {
                   renderer.setSize(width, height);
                   camera.position.set(0, 2, 60);
                   camera.lookAt(0, 0, 0);
-                  const scene = new THREE.Scene();
                   const ambientLight = new THREE.DirectionalLight(0xffffff, 0.9);
                   ambientLight.position.copy(camera.position);
                   scene.add(ambientLight);
@@ -107,6 +114,7 @@ const ViewProtein = (props) => {
                       width > height ? width / height + 1 : height / width + 1
                     );
                     object.position.copy(position);
+                    object.AtomsInfos = Atoms[i];
                     scene.add(object);
                   }
                   const start = new THREE.Vector3();
@@ -165,7 +173,7 @@ const ViewProtein = (props) => {
           </OrbitControlsView>
           <View style={{ backgroundColor: "0xFFFFFF" }}>
             <Text style={{ color: "#FFF", fontSize: 16, padding: 5 }}>
-              Atom:
+              {/* Atom: {atomSelected?.name}  {atomSelected?.element} */}
             </Text>
             <MaterialCommunityIcons
               // onPress={() => history.push("/list")}
