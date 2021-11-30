@@ -32,6 +32,7 @@ const List = () => {
           })
         }
       >
+
         <Text style={styles.text}>{item}</Text>
       </TouchableOpacity>
     </View>

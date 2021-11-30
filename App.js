@@ -5,6 +5,7 @@ import * as LocalAuthentication from "expo-local-authentication";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 // import List from "./Views/ListView";
 import ViewProtein from "./Views/ViewProtein";
+import Test from "./App"
 // import { useHistory } from "react-router-native";
 // import { NativeRouter, Route, Link } from "react-router-native";
 
