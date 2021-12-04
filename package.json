@@ -1,42 +1,33 @@
 {
-  "main": "node_modules/expo/AppEntry.js",
-  "scripts": {
-    "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "web": "expo start --web",
-    "eject": "expo eject"
-  },
-  "dependencies": {
-    "@unimodules/core": "^7.1.2",
-    "axios": "^0.24.0",
-    "expo": "~43.0.0",
-    "expo-file-system": "^13.0.3",
-    "expo-gl": "~11.0.3",
-    "expo-graphics": "^2.0.0",
-    "expo-local-authentication": "~12.0.1",
-    "expo-sharing": "^10.0.3",
-    "expo-status-bar": "~1.1.0",
-    "expo-three": "^6.0.1",
-    "expo-three-orbit-controls": "^2.0.0",
-    "parse-pdb": "^1.0.0",
-    "react": "17.0.1",
-    "react-dom": "17.0.1",
-    "react-native": "0.64.3",
-    "react-native-gesture-handler": "^1.10.3",
-    "react-native-paper": "^4.10.0",
-    "react-native-vector-icons": "^9.0.0",
-    "react-native-web": "0.17.1",
-    "react-router-native": "^5.2.1",
-    "string.prototype.matchall": "^4.0.6",
-    "three": "^0.134.0",
-    "three.interaction": "^0.2.3"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.12.9",
-    "typescript": "~4.3.5",
-    "@types/react": "~17.0.21",
-    "@types/react-native": "~0.64.12"
-  },
-  "private": true
+	"name": "swifty-proteins",
+	"version": "1.0.0",
+	"main": "node_modules/expo/AppEntry.js",
+	"scripts": {
+		"start": "expo start",
+		"android": "expo start --android",
+		"ios": "expo start --ios",
+		"web": "expo start --web",
+		"eject": "expo eject"
+	},
+	"dependencies": {
+		"@expo-google-fonts/montserrat": "^0.2.0",
+		"@react-navigation/native": "^6.0.6",
+		"@react-navigation/native-stack": "^6.2.5",
+		"expo": "~43.0.2",
+		"expo-app-loading": "~1.2.1",
+		"expo-local-authentication": "^12.0.1",
+		"expo-status-bar": "~1.1.0",
+		"react": "17.0.1",
+		"react-dom": "17.0.1",
+		"react-native": "0.64.3",
+		"react-native-safe-area-context": "3.3.2",
+		"react-native-screens": "~3.8.0",
+		"react-native-svg": "^12.1.1",
+		"react-native-vector-icons": "^9.0.0",
+		"react-native-web": "0.17.1"
+	},
+	"devDependencies": {
+		"@babel/core": "^7.12.9"
+	},
+	"private": true
 }
