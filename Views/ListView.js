@@ -1,6 +1,8 @@
 import {
   FlatList,
+  Platform,
   SafeAreaView,
+  StatusBar,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -57,6 +59,7 @@ const List = () => {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "#c0c5ce",
+    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
   },
   item: {
     shadowColor: "#000",
