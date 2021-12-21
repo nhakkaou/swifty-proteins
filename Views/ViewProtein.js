@@ -27,7 +27,9 @@ const ViewProtein = (props) => {
   const url1 = `https://files.rcsb.org/ligands/view/${ligand}_model.pdb`;
   const [width, setWidth] = useState(Dimensions.get("screen").width);
   const [height, setHeight] = useState(Dimensions.get("screen").height - 10);
-
+  const [aspectRatio, setCameraRatio] = useState(
+    width < height ? width / height : height / width
+  );
   useEffect(() => {
     Axios(url1)
       .then((res) => {
@@ -43,15 +45,18 @@ const ViewProtein = (props) => {
       })
       .catch((er) => alert(er));
   }, []);
+  useEffect(() => {
+    const subscription = Dimensions.addEventListener("change", () => {
+      setWidth(Dimensions.get("screen").width);
+      setHeight(Dimensions.get("screen").height - 30);
+      setCameraRatio(Dimensions.get("screen").width / Dimensions.get("screen").height);
+    });
+    return () => subscription?.remove();
+  }, [width, height]);
 
   const geo = new THREE.SphereGeometry();
   const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(
-    75,
-    width < height ? width / height : height / width,
-    0.1,
-    1000
-  );
+  const camera = new THREE.PerspectiveCamera(75, aspectRatio, 0.1, 1000);
   const raycaster = new THREE.Raycaster();
   const handleStateChange = ({ nativeEvent }) => {
     let mouse = new THREE.Vector2();
@@ -71,11 +76,13 @@ const ViewProtein = (props) => {
       ) : (
         <>
           <OrbitControlsView
+            key={width}
             style={{ flex: 2 }}
             camera={camera}
             onTouchEndCapture={handleStateChange}
           >
             <GLView
+              key={width}
               style={{ width: width, height: height }}
               onContextCreate={async (gl) => {
                 const {
@@ -155,8 +162,6 @@ const ViewProtein = (props) => {
                     camera.position.y,
                     camera.position.z
                   );
-                  camera.aspect =
-                    width > height ? height / width : width / height;
                   renderer.render(scene, camera);
                   gl.endFrameEXP();
                 };
@@ -164,7 +169,7 @@ const ViewProtein = (props) => {
               }}
             />
           </OrbitControlsView>
-          <View style={{backgroundColor: "#000"}}>
+          <View style={{ backgroundColor: "#000" }}>
             <MaterialCommunityIcons
               onPress={() => history.push("/list")}
               style={{ color: "#fff", padding: 5 }}
