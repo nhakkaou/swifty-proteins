@@ -9,6 +9,8 @@ import {
   SafeAreaView,
   Dimensions,
   TouchableOpacity,
+  ActivityIndicator,
+  StatusBar,
 } from "react-native";
 import { useHistory } from "react-router-native";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
@@ -80,13 +82,14 @@ const ViewProtein = (props) => {
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
+      <StatusBar animated={true} backgroundColor="#000" />
       {mount ? (
-        <Text>Loading ...</Text>
+        <ActivityIndicator size="large" />
       ) : (
         <>
           <OrbitControlsView
             key={keyRender}
-            style={{ flex: 2 }}
+            style={{ flex: 2, position: "relative" }}
             camera={camera}
             onTouchEndCapture={handleStateChange}
           >
@@ -184,16 +187,40 @@ const ViewProtein = (props) => {
               }}
             />
           </OrbitControlsView>
-          <View style={{ backgroundColor: "#000" }}>
+
+          <View
+            style={{
+              padding: 5,
+              width: "10%",
+              backgroundColor: "#fff",
+              position: "absolute",
+              bottom: 100,
+              right: 10,
+              borderRadius: 10,
+              height: 50,
+            }}
+          >
+            <TouchableOpacity
+              style={{ alignItems: "center", justifyContent: "center" }}
+            >
+              <Text>+</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={{ alignItems: "center", borderTopWidth: 1 }}
+            >
+              <Text>-</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={{ backgroundColor: "#fff", flexDirection: "row" }}>
             <MaterialCommunityIcons
               onPress={() => history.push("/list")}
-              style={{ color: "#fff", padding: 5 }}
+              style={{ color: "#000", padding: 5 }}
               size={35}
               name="keyboard-backspace"
             />
-            <Text style={{ color: "#fff" }} onPress={() => change_color()}>
-              WARK HNA
-            </Text>
+            <View style={{ padding: 5, width: "100%" }}>
+              <Text>Atom: C, Founder: Cediric haj Ahmed</Text>
+            </View>
           </View>
         </>
       )}
