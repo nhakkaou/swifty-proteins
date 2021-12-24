@@ -23,6 +23,8 @@ const ViewProtein = (props) => {
   const [connects, setConnects] = useState([]);
   const [mount, setMounted] = useState(true);
   const [Atoms, setAtoms] = useState([]);
+  const [keyRender, setKeyrender] = useState(false);
+  const [jmol, setJmol] = useState(true);
   const { ligand } = props.location;
   const url1 = `https://files.rcsb.org/ligands/view/${ligand}_model.pdb`;
   const [width, setWidth] = useState(Dimensions.get("screen").width);
@@ -45,11 +47,18 @@ const ViewProtein = (props) => {
       })
       .catch((er) => alert(er));
   }, []);
+  const change_color = () => {
+    setJmol(!jmol);
+    setKeyrender(!keyRender);
+  };
   useEffect(() => {
     const subscription = Dimensions.addEventListener("change", () => {
       setWidth(Dimensions.get("screen").width);
       setHeight(Dimensions.get("screen").height - 30);
-      setCameraRatio(Dimensions.get("screen").width / Dimensions.get("screen").height);
+      setCameraRatio(
+        Dimensions.get("screen").width / Dimensions.get("screen").height
+      );
+      setKeyrender(!keyRender);
     });
     return () => subscription?.remove();
   }, [width, height]);
@@ -76,13 +85,13 @@ const ViewProtein = (props) => {
       ) : (
         <>
           <OrbitControlsView
-            key={width}
+            key={keyRender}
             style={{ flex: 2 }}
             camera={camera}
             onTouchEndCapture={handleStateChange}
           >
             <GLView
-              key={width}
+              key={keyRender}
               style={{ width: width, height: height }}
               onContextCreate={async (gl) => {
                 const {
@@ -100,12 +109,13 @@ const ViewProtein = (props) => {
                 /********** Use PDB PARSER */
                 const position = new THREE.Vector3();
                 for (let i = 0; i < Atoms?.length; i++) {
+                  let colorCpk = jmol
+                    ? Colors[Atoms[i].element].jmol
+                    : Colors[Atoms[i].element].rasmol;
                   position.x = Atoms[i].x;
                   position.y = Atoms[i].y;
                   position.z = Atoms[i].z;
-                  let color = new THREE.Color(
-                    "#" + Colors[Atoms[i].element].jmol
-                  );
+                  let color = new THREE.Color("#" + colorCpk);
                   const mtrl = new THREE.MeshPhongMaterial({
                     color: color,
                     shininess: 50,
@@ -120,39 +130,44 @@ const ViewProtein = (props) => {
                 }
                 const start = new THREE.Vector3();
                 const end = new THREE.Vector3();
-                for (let j = 0; j < connects.length; j++) {
-                  for (let i = 1; i < connects[j].length; i++) {
-                    if (connects[j][i] - 1 < Atoms.length) {
-                      start.x = Atoms[connects[j][0] - 1].x;
-                      start.y = Atoms[connects[j][0] - 1].y;
-                      start.z = Atoms[connects[j][0] - 1].z;
-                      end.x = Atoms[connects[j][i] - 1].x;
-                      end.y = Atoms[connects[j][i] - 1].y;
-                      end.z = Atoms[connects[j][i] - 1].z;
+                if (jmol) {
+                  for (let j = 0; j < connects.length; j++) {
+                    for (let i = 1; i < connects[j].length; i++) {
+                      if (connects[j][i] - 1 < Atoms.length) {
+                        start.x = Atoms[connects[j][0] - 1].x;
+                        start.y = Atoms[connects[j][0] - 1].y;
+                        start.z = Atoms[connects[j][0] - 1].z;
+                        end.x = Atoms[connects[j][i] - 1].x;
+                        end.y = Atoms[connects[j][i] - 1].y;
+                        end.z = Atoms[connects[j][i] - 1].z;
 
-                      start.multiplyScalar(
-                        width > height ? width / height + 1 : height / width + 1
-                      );
-                      end.multiplyScalar(
-                        width > height ? width / height + 1 : height / width + 1
-                      );
-                      const geoBox = new THREE.BoxGeometry(
-                        0.5,
-                        0.5,
-                        start.distanceTo(end)
-                      );
-                      const cylinder = new THREE.Mesh(
-                        geoBox,
-                        new THREE.MeshPhongMaterial({ color: 0xffffff })
-                      );
-                      cylinder.position.copy(start);
-                      cylinder.position.lerp(end, 0.5);
-                      cylinder.lookAt(end);
-                      scene.add(cylinder);
+                        start.multiplyScalar(
+                          width > height
+                            ? width / height + 1
+                            : height / width + 1
+                        );
+                        end.multiplyScalar(
+                          width > height
+                            ? width / height + 1
+                            : height / width + 1
+                        );
+                        const geoBox = new THREE.BoxGeometry(
+                          0.5,
+                          0.5,
+                          start.distanceTo(end)
+                        );
+                        const cylinder = new THREE.Mesh(
+                          geoBox,
+                          new THREE.MeshPhongMaterial({ color: 0xffffff })
+                        );
+                        cylinder.position.copy(start);
+                        cylinder.position.lerp(end, 0.5);
+                        cylinder.lookAt(end);
+                        scene.add(cylinder);
+                      }
                     }
                   }
                 }
-
                 /************** */
 
                 const render = () => {
@@ -176,6 +191,9 @@ const ViewProtein = (props) => {
               size={35}
               name="keyboard-backspace"
             />
+            <Text style={{ color: "#fff" }} onPress={() => change_color()}>
+              WARK HNA
+            </Text>
           </View>
         </>
       )}
