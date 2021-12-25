@@ -2,7 +2,8 @@ import { GLView } from "expo-gl";
 import { Renderer } from "expo-three";
 import * as THREE from "three";
 import matchAll from "string.prototype.matchall";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
+import { captureScreen } from "react-native-view-shot";
 import {
   View,
   Text,
@@ -11,7 +12,11 @@ import {
   TouchableOpacity,
   ActivityIndicator,
   StatusBar,
+  Alert,
+  Button,
 } from "react-native";
+// import * as MediaLibrary from "expo-media-library";
+import * as Sharing from "expo-sharing";
 import { useHistory } from "react-router-native";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import Axios from "axios";
@@ -21,6 +26,7 @@ import parsePdb from "parse-pdb";
 import OrbitControlsView from "expo-three-orbit-controls";
 
 const ViewProtein = (props) => {
+  const RefScreen = useRef(null);
   const history = useHistory();
   const [connects, setConnects] = useState([]);
   const [mount, setMounted] = useState(true);
@@ -31,10 +37,13 @@ const ViewProtein = (props) => {
   const url1 = `https://files.rcsb.org/ligands/view/${ligand}_model.pdb`;
   const [width, setWidth] = useState(Dimensions.get("screen").width);
   const [height, setHeight] = useState(Dimensions.get("screen").height - 10);
+  const [modul, setModulisation] = useState(1);
   const [aspectRatio, setCameraRatio] = useState(
     width < height ? width / height : height / width
   );
+  let rnd = { render() {} };
   useEffect(() => {
+    // MediaLibrary.requestPermissionsAsync(true);
     Axios(url1)
       .then((res) => {
         if (res.data) {
@@ -66,6 +75,7 @@ const ViewProtein = (props) => {
   }, [width, height]);
 
   const geo = new THREE.SphereGeometry();
+  const geo2 = new THREE.BoxGeometry();
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(75, aspectRatio, 0.1, 1000);
   const raycaster = new THREE.Raycaster();
@@ -76,8 +86,49 @@ const ViewProtein = (props) => {
     raycaster.setFromCamera(mouse, camera);
     // calculate objects intersecting the picking ray
     const intersects = raycaster.intersectObjects(scene.children);
-    if (intersects[0]?.object?.AtomsInfos)
-      alert(intersects[0]?.object?.AtomsInfos.name);
+    if (intersects[0]?.object?.AtomsInfos) {
+      Alert.alert(
+        "Atom Details",
+        `Element : ${intersects[0].object.AtomsInfos.element}
+        Founder by: ${
+          Colors[intersects[0].object.AtomsInfos.element].discoverd_by
+        }
+        phase: ${Colors[intersects[0].object.AtomsInfos.element].phase}`,
+        [
+          {
+            text: "Cancel",
+            onPress: () => console.log("Cancel Pressed"),
+            style: "cancel",
+          },
+          { text: "OK", onPress: () => console.log("OK Pressed") },
+        ],
+        { cancelable: false }
+      );
+    }
+  };
+  const snapshot = () => {
+    try {
+      captureScreen({
+        format: "jpg",
+        quality: 0.8,
+      }).then((uri) => {
+        Sharing.shareAsync(uri, { dialogTitle: "Share this image" })
+          .then(async () => {
+            console.log(uri);
+            // await MediaLibrary.createAssetAsync(uri);
+          })
+          .catch((e) => console.log(e));
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  };
+  const Zoom = (value) => {
+    if (value && camera.position.z > 16) camera.position.z -= 5;
+    if (!value && camera.position.z < 100) camera.position.z += 5;
+    camera.lookAt(scene.position);
+    console.log(camera.position.z, camera.position.x, camera.position.y);
+    rnd?.render(scene, camera);
   };
 
   return (
@@ -94,6 +145,7 @@ const ViewProtein = (props) => {
             onTouchEndCapture={handleStateChange}
           >
             <GLView
+              ref={RefScreen}
               key={keyRender}
               style={{ width: width, height: height }}
               onContextCreate={async (gl) => {
@@ -123,7 +175,7 @@ const ViewProtein = (props) => {
                     color: color,
                     shininess: 50,
                   });
-                  let object = new THREE.Mesh(geo, mtrl);
+                  let object = new THREE.Mesh(modul === 3 ? geo2 : geo, mtrl);
                   position.multiplyScalar(
                     width > height ? width / height + 1 : height / width + 1
                   );
@@ -133,7 +185,7 @@ const ViewProtein = (props) => {
                 }
                 const start = new THREE.Vector3();
                 const end = new THREE.Vector3();
-                if (jmol) {
+                if (modul !== 2) {
                   for (let j = 0; j < connects.length; j++) {
                     for (let i = 1; i < connects[j].length; i++) {
                       if (connects[j][i] - 1 < Atoms.length) {
@@ -202,25 +254,93 @@ const ViewProtein = (props) => {
           >
             <TouchableOpacity
               style={{ alignItems: "center", justifyContent: "center" }}
+              onPress={() => Zoom(true)}
             >
               <Text>+</Text>
             </TouchableOpacity>
             <TouchableOpacity
               style={{ alignItems: "center", borderTopWidth: 1 }}
+              onPress={() => Zoom(false)}
             >
               <Text>-</Text>
             </TouchableOpacity>
           </View>
-          <View style={{ backgroundColor: "#fff", flexDirection: "row" }}>
+          <View
+            style={{
+              padding: 5,
+              width: "30%",
+              backgroundColor: "#fff",
+              position: "absolute",
+              top: 80,
+              right: 10,
+              borderRadius: 10,
+
+              flexDirection: "row",
+            }}
+          >
+            <Button
+              style={{
+                backgroundColor: "#fff",
+                color: "#000",
+              }}
+              title="1"
+              onPress={() => {
+                setModulisation(1);
+                setKeyrender(!keyRender);
+              }}
+            />
+            <Button
+              style={{
+                backgroundColor: "#fff",
+                color: "#000",
+              }}
+              title="2"
+              onPress={() => {
+                setModulisation(2);
+                setKeyrender(!keyRender);
+              }}
+            />
+            <Button
+              style={{
+                backgroundColor: "#fff",
+                color: "#000",
+              }}
+              title="3"
+              onPress={() => {
+                setModulisation(3);
+                setKeyrender(!keyRender);
+              }}
+            />
+            <Button
+              style={{
+                backgroundColor: "#fff",
+                color: "#000",
+              }}
+              title="4"
+              onPress={() => {
+                change_color();
+              }}
+            />
+          </View>
+          <View
+            style={{
+              backgroundColor: "#000",
+              flexDirection: "row",
+              justifyContent: "space-between",
+            }}
+          >
             <MaterialCommunityIcons
               onPress={() => history.push("/list")}
-              style={{ color: "#000", padding: 5 }}
+              style={{ color: "#fff", padding: 5 }}
               size={35}
               name="keyboard-backspace"
             />
-            <View style={{ padding: 5, width: "100%" }}>
-              <Text>Atom: C, Founder: Cediric haj Ahmed</Text>
-            </View>
+            <MaterialCommunityIcons
+              onPress={snapshot}
+              style={{ color: "#fff", padding: 5 }}
+              size={35}
+              name="share"
+            />
           </View>
         </>
       )}
