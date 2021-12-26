@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import {
 	StyleSheet,
 	Text,
@@ -14,9 +14,11 @@ import { TouchableOpacity } from "react-native";
 import colors from "../assets/colors";
 import { logoDark, logoLight } from "../assets/icons";
 import { SvgXml } from "react-native-svg";
+import { AuthContext } from "../context/auth";
 
 const Login = ({ navigation }) => {
 	const colorScheme = useColorScheme();
+	const { changeAuth } = useContext(AuthContext);
 	const [isSupported, setisSupported] = useState(false);
 
 	useEffect(() => {
@@ -30,6 +32,7 @@ const Login = ({ navigation }) => {
 				LocalAuthentication.AuthenticationType.FINGERPRINT
 			);
 			if (res.success) {
+				changeAuth(true);
 				navigation.navigate("Home");
 			} else {
 				Alert.alert("Authentication failed");

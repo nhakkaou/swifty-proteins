@@ -1,5 +1,5 @@
-import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import React, { useEffect, useContext, useRef } from "react";
+import { AppState } from "react-native";
 import Navigator from "./navigator/Navigator";
 import {
 	useFonts,
@@ -7,6 +7,7 @@ import {
 	Montserrat_400Regular,
 } from "@expo-google-fonts/montserrat";
 import AppLoading from "expo-app-loading";
+import { AuthContext, AuthProvider } from "./context/auth";
 
 export default function App() {
 	const [loadFonts] = useFonts({
@@ -16,14 +17,9 @@ export default function App() {
 
 	if (!loadFonts) return <AppLoading />;
 
-	return <Navigator />;
+	return (
+		<AuthProvider>
+			<Navigator />
+		</AuthProvider>
+	);
 }
-
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		backgroundColor: "#fff",
-		alignItems: "center",
-		justifyContent: "center",
-	},
-});
