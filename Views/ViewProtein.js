@@ -15,7 +15,7 @@ import {
   Alert,
   Button,
 } from "react-native";
-// import * as MediaLibrary from "expo-media-library";
+import * as MediaLibrary from "expo-media-library";
 import * as Sharing from "expo-sharing";
 import { useHistory } from "react-router-native";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
@@ -41,9 +41,9 @@ const ViewProtein = (props) => {
   const [aspectRatio, setCameraRatio] = useState(
     width < height ? width / height : height / width
   );
+  const [status, requestPermission] = MediaLibrary.usePermissions();
   let rnd = { render() {} };
   useEffect(() => {
-    // MediaLibrary.requestPermissionsAsync(true);
     Axios(url1)
       .then((res) => {
         if (res.data) {
@@ -106,26 +106,25 @@ const ViewProtein = (props) => {
       );
     }
   };
-  const snapshot = () => {
+  const snapshot = async () => {
     try {
-      captureScreen({
+      let uri = await captureScreen({
         format: "jpg",
         quality: 0.8,
-      }).then((uri) => {
-        Sharing.shareAsync(uri, { dialogTitle: "Share this image" })
-          .then(async () => {
-            console.log(uri);
-            // await MediaLibrary.createAssetAsync(uri);
-          })
-          .catch((e) => console.log(e));
       });
+      await Sharing.shareAsync(uri, { dialogTitle: "Share this image" });
+      let result = await MediaLibrary.requestPermissionsAsync(true);
+      if (result.status === "granted") {
+        let r = await MediaLibrary.saveToLibraryAsync(uri);
+        console.log(r);
+      }
     } catch (e) {
       console.log(e);
     }
   };
   const Zoom = (value) => {
-    if (value && camera.position.z > 16) camera.position.z -= 5;
-    if (!value && camera.position.z < 100) camera.position.z += 5;
+    if (value) camera.position.z -= 5;
+    if (!value) camera.position.z += 5;
     camera.lookAt(scene.position);
     console.log(camera.position.z, camera.position.x, camera.position.y);
     rnd?.render(scene, camera);
