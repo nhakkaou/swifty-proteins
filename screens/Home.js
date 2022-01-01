@@ -21,12 +21,14 @@ import {
 } from "../assets/icons";
 import Feather from "react-native-vector-icons/Feather";
 import data from "../assets/ligands.json";
+import useOrientation from "../hooks/useOrientation";
 Feather.loadFont();
 
-const Home = () => {
+const Home = ({ navigation }) => {
 	const colorScheme = useColorScheme();
 	const [list, setList] = React.useState(data);
 	const [search, setSearch] = React.useState("");
+	const orientation = useOrientation();
 
 	const styles = StyleSheet.create({
 		bg: {
@@ -87,6 +89,21 @@ const Home = () => {
 		},
 	});
 
+	const styles_landscape = StyleSheet.create({
+		bg: {
+			flexDirection: "row",
+			flex: 1,
+		},
+		header: {
+			flex: 1,
+			justifyContent: "center",
+			alignItems: "center",
+		},
+		list_container: {
+			flex: 2,
+		},
+	});
+
 	const handleSearch = (search) => {
 		setSearch(search);
 		if (search === "") setList(data);
@@ -100,12 +117,7 @@ const Home = () => {
 	const renderItem = ({ item }) => (
 		<TouchableOpacity
 			style={styles.item}
-			// onPress={() =>
-			//   history.push({
-			// 	pathname: "ViewProtein",
-			// 	ligand: item,
-			//   })
-			// }
+			onPress={() => navigation.navigate("Protein", { ligand: item })}
 		>
 			<SvgXml xml={colorScheme === "dark" ? iconDark : iconLight} />
 			<Text style={styles.text}>{item}</Text>
@@ -116,28 +128,34 @@ const Home = () => {
 
 	return (
 		<View style={styles.bg}>
-			<SafeAreaView style={styles.bg}>
+			<SafeAreaView
+				style={orientation === "portrait" ? styles.bg : styles_landscape.bg}
+			>
 				<StatusBar style={colorScheme === "dark" ? "light" : "dark"} />
-				<View style={styles.header}>
+				<View
+					style={
+						orientation === "portrait" ? styles.header : styles_landscape.header
+					}
+				>
 					{/* <Image source={colorScheme === "dark" ? logoDark : logoLight} /> */}
 					<SvgXml
 						xml={colorScheme === "dark" ? logoSmallDark : logoSmallLight}
 					/>
-				</View>
-				<View style={styles.search_container}>
-					<TextInput
-						placeholder="Search"
-						style={styles.search_input}
-						value={search}
-						onChangeText={handleSearch}
-					/>
-					<TouchableOpacity style={styles.search_button}>
-						<Feather
-							name="search"
-							size={20}
-							color={colors[colorScheme].primary}
+					<View style={styles.search_container}>
+						<TextInput
+							placeholder="Search"
+							style={styles.search_input}
+							value={search}
+							onChangeText={handleSearch}
 						/>
-					</TouchableOpacity>
+						<TouchableOpacity style={styles.search_button}>
+							<Feather
+								name="search"
+								size={20}
+								color={colors[colorScheme].primary}
+							/>
+						</TouchableOpacity>
+					</View>
 				</View>
 				<View style={styles.list_container}>
 					<FlatList
