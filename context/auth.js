@@ -9,9 +9,9 @@ const AuthProvider = ({ children }) => {
 	const appState = useRef(AppState.currentState);
 
 	useEffect(() => {
-		// if (!isAuth) {
-		// 	navigationRef.current.navigate("Login");
-		// }
+		if (!isAuth) {
+			navigationRef.current.navigate("Login");
+		}
 	}, [isAuth]);
 
 	changeAuth = (value) => {

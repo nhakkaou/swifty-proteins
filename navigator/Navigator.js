@@ -10,7 +10,7 @@ const Navigator = () => {
 	return (
 		<NavigationContainer ref={navigationRef}>
 			<Stack.Navigator
-				initialRouteName="Home"
+				initialRouteName="Login"
 				screenOptions={{
 					headerShown: false,
 				}}

@@ -1,13 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useEffect, useState, useContext } from "react";
-import {
-	StyleSheet,
-	Text,
-	View,
-	useColorScheme,
-	Image,
-	Alert,
-} from "react-native";
+import { StyleSheet, Text, View, useColorScheme, Alert } from "react-native";
 import * as LocalAuthentication from "expo-local-authentication";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { TouchableOpacity } from "react-native";
@@ -15,6 +8,7 @@ import colors from "../assets/colors";
 import { logoDark, logoLight } from "../assets/icons";
 import { SvgXml } from "react-native-svg";
 import { AuthContext } from "../context/auth";
+import axios from "axios";
 
 const Login = ({ navigation }) => {
 	const colorScheme = useColorScheme();
@@ -24,6 +18,19 @@ const Login = ({ navigation }) => {
 	useEffect(() => {
 		if (LocalAuthentication.AuthenticationType.FINGERPRINT)
 			setisSupported(true);
+	}, []);
+
+	useEffect(() => {
+		const subscription = navigation.addListener("focus", () => {
+			axios("https://www.google.com")
+				.then((res) => {})
+				.catch((er) => {
+					Alert.alert("No Internet Connection");
+					setisSupported(false);
+				});
+		});
+
+		return () => subscription.remove();
 	}, []);
 
 	const authenticate = async () => {
