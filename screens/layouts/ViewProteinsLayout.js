@@ -268,7 +268,7 @@ const ViewProteinsLayout = ({ navigation, setMod, setZoom, children }) => {
               />
             </TouchableOpacity>
           )}
-          <ActivityIndicator style={styles.spinner} />
+          <ActivityIndicator style={styles.spinner} color="white" />
           {/* Drawing Protein */}
           {mount ? (
             <ActivityIndicator size="large" />
