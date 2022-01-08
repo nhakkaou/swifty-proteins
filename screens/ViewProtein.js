@@ -172,6 +172,7 @@ const ViewProteinsLayout = ({ navigation, route }) => {
       setCameraRatio(
         Dimensions.get("screen").width / Dimensions.get("screen").height
       );
+      console.log("Camera", camera.position.z);
       setKeyrender(!keyRender);
     });
     return () => subscription?.remove();
@@ -207,8 +208,12 @@ const ViewProteinsLayout = ({ navigation, route }) => {
     }
   };
   const Zoom = (value) => {
-    if (value) camera.position.z -= 5;
-    if (!value) camera.position.z += 5;
+    if (value) {
+      if (camera.position.z - 5 > 10) camera.position.z -= 5;
+    }
+    if (!value) {
+      if (camera.position.z + 5 < 120) camera.position.z += 5;
+    }
     console.log(camera.position.z);
     camera.lookAt(scene.position);
     rendererRef.current?.render(scene, camera);
