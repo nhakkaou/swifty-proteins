@@ -16,8 +16,22 @@ const Login = ({ navigation }) => {
 	const [isSupported, setisSupported] = useState(false);
 
 	useEffect(() => {
-		if (LocalAuthentication.AuthenticationType.FINGERPRINT)
-			setisSupported(true);
+		LocalAuthentication.hasHardwareAsync()
+			.then((result) => {
+				setisSupported(result);
+			})
+			.catch((err) => console.log(err));
+		LocalAuthentication.supportedAuthenticationTypesAsync()
+			.then((result) => {
+				if (result.includes(LocalAuthentication.AuthenticationType.FINGERPRINT))
+					setisSupported(true);
+			})
+			.catch((err) => console.log(err));
+		LocalAuthentication.isEnrolledAsync()
+			.then((result) => {
+				setisSupported(result);
+			})
+			.catch((err) => console.log(err));
 	}, []);
 
 	useEffect(() => {
